@@ -1,10 +1,10 @@
 
 [![Travis build
-status](https://travis-ci.org/muschellij2/mscstts.svg?branch=master)](https://travis-ci.org/muschellij2/mscstts)
+status](https://travis-ci.com/muschellij2/mscstts.svg?branch=master)](https://travis-ci.com/muschellij2/mscstts)
 [![AppVeyor Build
 Status](https://ci.appveyor.com/api/projects/status/github/muschellij2/mscstts?branch=master&svg=true)](https://ci.appveyor.com/project/muschellij2/mscstts)
 [![Coverage
-status](https://coveralls.io/repos/github/muschellij2/mscstts/badge.svg?branch=master)](https://coveralls.io/r/muschellij2/mscstts?branch=master)
+status](https://codecov.io/gh/muschellij2/mscstts/branch/master/graph/badge.svg)](https://codecov.io/github/muschellij2/mscstts?branch=master)
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # mscstts Package:
