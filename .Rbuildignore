@@ -7,3 +7,4 @@
 ^\.travis\.yml$
 ^example\.mp3$
 
+^cran-comments\.md$
