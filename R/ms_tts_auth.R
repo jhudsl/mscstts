@@ -74,6 +74,9 @@ valid_ms_tts_key = function(api_key = NULL) {
   token_url = paste0('https://api.cognitive.microsoft.com/',
                      'sts/v1.0/issueToken')
 
+  if (!have_ms_tts_key()) {
+    return(FALSE)
+  }
   api_key = get_ms_tts_key(api_key = api_key, error = TRUE)
 
   hdr = httr::add_headers('Ocp-Apim-Subscription-Key' =

@@ -1,5 +1,5 @@
 Package: mscstts
-Version: 0.1.0
+Version: 0.2.0
 Title: R Client for the Microsoft Cognitive Services Text to Speech REST API
 Description: R Client for the Microsoft Cognitive Services Text to 
   Speech REST API, including voice synthesis. A valid account 
