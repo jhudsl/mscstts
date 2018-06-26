@@ -1,8 +1,17 @@
 Package: mscstts
 Version: 0.1.0
 Title: R Client for the Microsoft Cognitive Services Text to Speech REST API
-Description: R Client for the Microsoft Cognitive Services Text to Speech REST API, including voice synthesis. A valid account MUST be registered at the Microsoft Cognitive Services website <https://www.microsoft.com/cognitive-services/> in order to obtain a (free) API key. Without an API key, this package will not work properly.
-Authors@R: c(person(given = "John",family = "Muschelli",email = "muschellij2@gmail.com",role = c("aut", "cre"),comment = c(ORCID = "0000-0001-6469-1750")))
+Description: R Client for the Microsoft Cognitive Services Text to 
+  Speech REST API, including voice synthesis. A valid account 
+  MUST be registered at the Microsoft Cognitive Services website 
+  <https://www.microsoft.com/cognitive-services/> in order to 
+  obtain a (free) API key. Without an API key, this package will not 
+  work properly.
+Authors@R: 
+  c(person(given = "John",family = "Muschelli",
+  email = "muschellij2@gmail.com",
+  role = c("aut", "cre"),
+  comment = c(ORCID = "0000-0001-6469-1750")))
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
@@ -11,7 +20,12 @@ Suggests:
     knitr,
     rmarkdown,
     covr,
+    tuneR,
     testthat
 VignetteBuilder: knitr
 URL: https://github.com/muschellij2/mscstts
 BugReports: https://github.com/muschellij2/mscstts/issues
+RoxygenNote: 6.0.1
+Imports: 
+    httr,
+    jsonlite

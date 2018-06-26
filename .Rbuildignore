@@ -1,0 +1,9 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^mscstts\.Rproj$
+^LICENSE\.md$
+^README\.Rmd$
+^appveyor\.yml$
+^\.travis\.yml$
+^example\.mp3$
+
