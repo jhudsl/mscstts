@@ -11,4 +11,5 @@
 
 ---
 
-The main function of this package is `ms_synthesize`.  This provides functionality similar to `aws.polly` for voice synthesis and `mscstexta4r` for interfaces with the MS Cognitive Services API. Fixed simple VignetteBuilder note.
+The main function of this package is `ms_synthesize`.  This provides functionality similar to `aws.polly` for voice synthesis and `mscstexta4r` for interfaces with the MS Cognitive Services API. Fixed simple VignetteBuilder note.  Added the single
+quotes for the DESCRIPTION name.
