@@ -1,11 +1,11 @@
 Package: mscstts
 Version: 0.2.2
-Title: R Client for the Microsoft Cognitive Services 'Text-to-Speech' REST 'API'
+Title: R Client for the Microsoft Cognitive Services 'Text-to-Speech' REST API
 Description: R Client for the Microsoft Cognitive Services 
-  'Text-to-Speech' REST 'API', including voice synthesis. A valid account 
+  'Text-to-Speech' REST API, including voice synthesis. A valid account 
   must be registered at the Microsoft Cognitive Services website 
   <https://www.microsoft.com/cognitive-services/> in order to 
-  obtain a (free) 'API' key. Without an 'API' key, this package will not 
+  obtain a (free) API key. Without an API key, this package will not 
   work properly.
 Authors@R: 
   c(person(given = "John",family = "Muschelli",
