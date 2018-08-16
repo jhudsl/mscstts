@@ -4,7 +4,7 @@
 #' @param gender Sex of the Speaker
 #' @param language Language to be spoken,
 #' must be from \code{\link{ms_language_codes}}
-#' @param escape Should non-standard chararacters be substituted?  Should not
+#' @param escape Should non-standard characters be substituted?  Should not
 #' be used if \code{script} has SSML tags
 #'
 #' @return A character string of the text and SSML markup
