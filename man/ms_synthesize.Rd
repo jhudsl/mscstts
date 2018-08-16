@@ -32,7 +32,7 @@ must be from \code{\link{ms_language_codes}}}
 \url{https://docs.microsoft.com/en-us/azure/cognitive-services/speech/api-reference-rest/bingvoiceoutput}
 for more information}
 
-\item{escape}{Should non-standard chararacters be substituted?  Should not
+\item{escape}{Should non-standard characters be substituted?  Should not
 be used if \code{script} has SSML tags. See \code{\link{create_ssml}}}
 
 \item{...}{Additional arguments to send to \code{\link{POST}}}

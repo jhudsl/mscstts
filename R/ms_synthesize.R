@@ -14,7 +14,7 @@
 #' @param output_format Format of the output, see
 #' \url{https://docs.microsoft.com/en-us/azure/cognitive-services/speech/api-reference-rest/bingvoiceoutput}
 #' for more information
-#' @param escape Should non-standard chararacters be substituted?  Should not
+#' @param escape Should non-standard characters be substituted?  Should not
 #' be used if \code{script} has SSML tags. See \code{\link{create_ssml}}
 #' @param ... Additional arguments to send to \code{\link{POST}}
 #'
