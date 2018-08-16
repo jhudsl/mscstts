@@ -14,6 +14,8 @@
 #' @param output_format Format of the output, see
 #' \url{https://docs.microsoft.com/en-us/azure/cognitive-services/speech/api-reference-rest/bingvoiceoutput}
 #' for more information
+#' @param escape Should non-standard chararacters be substituted?  Should not
+#' be used if \code{script} has SSML tags. See \code{\link{create_ssml}}
 #' @param ... Additional arguments to send to \code{\link{POST}}
 #'
 #' @return A list of the request, content, token, and `SSML`.
@@ -39,7 +41,7 @@ ms_synthesize = function(
   script,
   token = NULL,
   api_key = NULL,
-  gender = "Female",
+  gender = c("Female", "Male"),
   language = "en-US",
   output_format = c( "raw-16khz-16bit-mono-pcm" ,
                      "ssml-16khz-16bit-mono-tts",
@@ -49,21 +51,18 @@ ms_synthesize = function(
                     "audio-16khz-128kbitrate-mono-mp3",
                     "audio-16khz-64kbitrate-mono-mp3",
                     "audio-16khz-32kbitrate-mono-mp3"),
+  escape = FALSE,
   ...
   ){
-  locales = ms_locales()
-  n_locales = names(locales)
-  stopifnot(length(language) == 1)
-  if (!(language %in% n_locales)) {
-    stop(paste0("Lanuage ", language, " not in locales"))
-  }
-  locales = locales[[language]]
-  n_locales = names(locales)
-  stopifnot(length(gender) == 1)
-  if (!(gender %in% n_locales)) {
-    stop(paste0("Gender ", gender, " not in locales for this language"))
-  }
-  xname = locales[[gender]]
+
+  # language_to_ms_name(langu)
+
+  L = validate_language_gender(
+    language = language,
+    gender = gender)
+  language = L$language
+  gender = L$gender
+  xname = L$full_name
 
 
   synth_url = paste0(
@@ -82,17 +81,8 @@ ms_synthesize = function(
 
   ctype = content_type("application/ssml+xml")
 
-
-  ssml = c(paste0(
-    "<speak version='1.0' ", "xml:lang='",
-    language, "'>"),
-    paste0("<voice xml:lang='", language ,"'",
-           " xml:gender='", gender, "'"),
-    paste0(" name='", xname, "'"),
-    ">",
-    script, "</voice>",
-    "</speak>")
-  ssml = paste(ssml, collapse = "")
+  ssml = create_ssml(script = script, gender = gender, language = language,
+                     escape = escape)
 
   if (nchar(ssml) > 1024) {
     cat(ssml)

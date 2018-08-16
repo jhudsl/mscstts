@@ -1,3 +1,10 @@
+# mscstts 0.3.0
+
+* Refactoring some code.
+* Allow for escaping in SSML.
+* Separated validation code for language and gender combinations.
+
+
 # mscstts 0.2.2
 
 * CRAN submission.

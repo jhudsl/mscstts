@@ -5,12 +5,13 @@
 \title{Get Microsoft Text To Speech (TTS) or Cognitive
 Services Token from API Key}
 \usage{
-ms_synthesize(script, token = NULL, api_key = NULL, gender = "Female",
-  language = "en-US", output_format = c("raw-16khz-16bit-mono-pcm",
+ms_synthesize(script, token = NULL, api_key = NULL,
+  gender = c("Female", "Male"), language = "en-US",
+  output_format = c("raw-16khz-16bit-mono-pcm",
   "ssml-16khz-16bit-mono-tts", "audio-16khz-16kbps-mono-siren",
   "riff-16khz-16kbps-mono-siren", "riff-16khz-16bit-mono-pcm",
   "audio-16khz-128kbitrate-mono-mp3", "audio-16khz-64kbitrate-mono-mp3",
-  "audio-16khz-32kbitrate-mono-mp3"), ...)
+  "audio-16khz-32kbitrate-mono-mp3"), escape = FALSE, ...)
 }
 \arguments{
 \item{script}{A character vector of lines to be spoken}
@@ -30,6 +31,9 @@ must be from \code{\link{ms_language_codes}}}
 \item{output_format}{Format of the output, see
 \url{https://docs.microsoft.com/en-us/azure/cognitive-services/speech/api-reference-rest/bingvoiceoutput}
 for more information}
+
+\item{escape}{Should non-standard chararacters be substituted?  Should not
+be used if \code{script} has SSML tags. See \code{\link{create_ssml}}}
 
 \item{...}{Additional arguments to send to \code{\link{POST}}}
 }
