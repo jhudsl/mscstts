@@ -15,7 +15,7 @@ create_ssml(script, gender = c("Female", "Male"), language = "en-US",
 \item{language}{Language to be spoken,
 must be from \code{\link{ms_language_codes}}}
 
-\item{escape}{Should non-standard chararacters be substituted?  Should not
+\item{escape}{Should non-standard characters be substituted?  Should not
 be used if \code{script} has SSML tags}
 }
 \value{
