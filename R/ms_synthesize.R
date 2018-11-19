@@ -45,15 +45,16 @@ ms_synthesize = function(
   language = "en-US",
   output_format = c( "raw-16khz-16bit-mono-pcm" ,
                      "ssml-16khz-16bit-mono-tts",
-                    "audio-16khz-16kbps-mono-siren",
-                    "riff-16khz-16kbps-mono-siren",
-                    "riff-16khz-16bit-mono-pcm",
-                    "audio-16khz-128kbitrate-mono-mp3",
-                    "audio-16khz-64kbitrate-mono-mp3",
-                    "audio-16khz-32kbitrate-mono-mp3"),
+                     "audio-16khz-16kbps-mono-siren",
+                     "riff-16khz-16kbps-mono-siren",
+                     "riff-16khz-16bit-mono-pcm",
+                     "audio-16khz-128kbitrate-mono-mp3",
+                     "audio-16khz-64kbitrate-mono-mp3",
+                     "audio-16khz-32kbitrate-mono-mp3"),
   escape = FALSE,
+  region = NULL,
   ...
-  ){
+){
 
   # language_to_ms_name(langu)
 
@@ -65,9 +66,14 @@ ms_synthesize = function(
   xname = L$full_name
 
 
-  synth_url = paste0(
-    'https://speech.platform.bing.com/',
-    'synthesize')
+  # synth_url = paste0(
+  #   'https://speech.platform.bing.com/',
+  #   'synthesize')
+  region = ms_region(region)
+  synth_url = paste0("https://", region,
+                     ".tts.speech.microsoft.com/",
+                     "cognitiveservices/v1")
+
   if (is.null(token)) {
     token = get_ms_tts_token(api_key = api_key)$token
   }
@@ -103,4 +109,13 @@ ms_synthesize = function(
     token = token)
   return(L)
 
+}
+
+#' @rdname ms_synthesize
+#' @param region Subscription region for your key.
+#' See \url{https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech}
+#'
+#' @export
+ms_region = function(region = c("westus", "eastasia", "northeurope")) {
+  region = match.arg(region)
 }

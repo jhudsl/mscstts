@@ -1,9 +1,13 @@
+# mscstts 0.4.0
+
+* Added `reveal` code for tokens.
+* Added `validate_language_gender`.
+
 # mscstts 0.3.0
 
 * Refactoring some code.
 * Allow for escaping in SSML.
 * Separated validation code for language and gender combinations.
-
 
 # mscstts 0.2.2
 

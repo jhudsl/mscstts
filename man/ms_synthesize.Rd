@@ -2,6 +2,7 @@
 % Please edit documentation in R/ms_synthesize.R
 \name{ms_synthesize}
 \alias{ms_synthesize}
+\alias{ms_region}
 \title{Get Microsoft Text To Speech (TTS) or Cognitive
 Services Token from API Key}
 \usage{
@@ -11,7 +12,10 @@ ms_synthesize(script, token = NULL, api_key = NULL,
   "ssml-16khz-16bit-mono-tts", "audio-16khz-16kbps-mono-siren",
   "riff-16khz-16kbps-mono-siren", "riff-16khz-16bit-mono-pcm",
   "audio-16khz-128kbitrate-mono-mp3", "audio-16khz-64kbitrate-mono-mp3",
-  "audio-16khz-32kbitrate-mono-mp3"), escape = FALSE, ...)
+  "audio-16khz-32kbitrate-mono-mp3"), escape = FALSE, region = NULL,
+  ...)
+
+ms_region(region = c("westus", "eastasia", "northeurope"))
 }
 \arguments{
 \item{script}{A character vector of lines to be spoken}
@@ -34,6 +38,9 @@ for more information}
 
 \item{escape}{Should non-standard characters be substituted?  Should not
 be used if \code{script} has SSML tags. See \code{\link{create_ssml}}}
+
+\item{region}{Subscription region for your key.
+See \url{https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech}}
 
 \item{...}{Additional arguments to send to \code{\link{POST}}}
 }

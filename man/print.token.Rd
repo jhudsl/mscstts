@@ -2,9 +2,12 @@
 % Please edit documentation in R/show.token.R
 \name{print.token}
 \alias{print.token}
+\alias{reveal}
 \title{Print method for token}
 \usage{
 \method{print}{token}(x, reveal = FALSE, ...)
+
+reveal(x, ...)
 }
 \arguments{
 \item{x}{an object used to select a method.}
