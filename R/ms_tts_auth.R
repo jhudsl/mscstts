@@ -11,11 +11,14 @@
 #' \code{api_key = Sys.getenv('MS_TTS_API_KEY")}, or
 #' \code{api_key = Sys.getenv('MS_TTS_API_KEY1")}, or
 #' \code{api_key = Sys.getenv('MS_TTS_API_KEY2")}
+#' @param region Subscription region for your key.
+#' See
+#' \url{https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech}
 #' @return API key
 #' @export
 #' @examples
-#' res = get_ms_tts_key(error = FALSE)
-get_ms_tts_key = function(api_key = NULL, error = TRUE) {
+#' res = ms_get_tts_key(error = FALSE)
+ms_get_tts_key = function(api_key = NULL, error = TRUE) {
   if (is.null(api_key)) {
     api_key = getOption("ms_tts_key")
   }
@@ -37,8 +40,8 @@ get_ms_tts_key = function(api_key = NULL, error = TRUE) {
     }
   }
 
-  if (!is.null(api_key)){
-    if (api_key %in% ""){
+  if (!is.null(api_key)) {
+    if (api_key %in% "") {
       api_key = NULL
     }
   }
@@ -52,37 +55,36 @@ get_ms_tts_key = function(api_key = NULL, error = TRUE) {
   return(api_key)
 }
 
-#' @rdname get_ms_tts_key
+#' @rdname ms_get_tts_key
 #' @export
-have_ms_tts_key = function(api_key = NULL) {
-  api_key = get_ms_tts_key(api_key = api_key, error = FALSE)
+ms_have_tts_key = function(api_key = NULL) {
+  api_key = ms_get_tts_key(api_key = api_key, error = FALSE)
   !is.null(api_key)
 }
 
 
-#' @rdname get_ms_tts_key
+#' @rdname ms_get_tts_key
 #' @export
-set_ms_tts_key = function(api_key) {
+ms_set_tts_key = function(api_key) {
   options("ms_tts_key" = api_key)
   invisible(NULL)
 }
 
 
-#' @rdname get_ms_tts_key
+#' @rdname ms_get_tts_key
 #' @export
-valid_ms_tts_key = function(api_key = NULL) {
-  token_url = paste0('https://api.cognitive.microsoft.com/',
-                     'sts/v1.0/issueToken')
+ms_valid_tts_key = function(
+  api_key = NULL,
+  region = ms_regions()) {
 
-  if (!have_ms_tts_key()) {
+  res = try({
+    ms_get_tts_token(api_key = api_key,
+                     region = region)
+    })
+  if (inherits(res, "try-error")) {
     return(FALSE)
   }
-  api_key = get_ms_tts_key(api_key = api_key, error = TRUE)
-
-  hdr = httr::add_headers('Ocp-Apim-Subscription-Key' =
-                            api_key)
-  res = httr::POST(token_url,
-                   hdr, httr::content_type("text/plain"))
+  res = res$request
   return(httr::status_code(res) < 400)
 }
 
@@ -90,33 +92,74 @@ valid_ms_tts_key = function(api_key = NULL) {
 #' Services Token from API Key
 #'
 #' @param api_key Microsoft Cognitive Services API key
-#'
+#' @param region Subscription region for your key.
+#' See
+#' \url{https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech}
 #' @return A list of the request, and token
 #' @export
 #' @importFrom httr POST add_headers stop_for_status content content_type
 #'
 #' @examples
-#' if (valid_ms_tts_key()) {
-#'    token = get_ms_tts_token()
+#' if (ms_valid_tts_key()) {
+#'    token = ms_get_tts_token()
 #' }
-get_ms_tts_token = function(api_key = NULL) {
+ms_get_tts_token = function(
+  api_key = NULL,
+  region = ms_regions()) {
 
-  token_url = paste0('https://api.cognitive.microsoft.com/',
-                     'sts/v1.0/issueToken')
+  token_url = ms_auth_url(region = region)
 
-  api_key = get_ms_tts_key(api_key = api_key, error = TRUE)
+  api_key = ms_get_tts_key(api_key = api_key, error = TRUE)
 
   hdr = httr::add_headers('Ocp-Apim-Subscription-Key' =
                             api_key)
   res = httr::POST(token_url,
-                   hdr, httr::content_type("text/plain"))
+                   hdr,
+                   # httr::content_type("application/x-www-form-urlencoded"))
+                   httr::content_type("text/plain"))
 
   httr::stop_for_status(res)
   cr = httr::content(res)
   base64_token = rawToChar(cr)
+  attr(base64_token, "timestamp") = Sys.time()
   class(base64_token) = "token"
   list(request = res,
        # content = cr,
        token = base64_token)
 }
 
+#' @rdname ms_get_tts_token
+#' @export
+ms_auth_url = function(
+  region = ms_regions()) {
+  if (!is.null(region)) {
+    region = match.arg(region)
+  } else {
+    region = getOption("ms_region")
+  }
+  if (!is.null(region)) {
+    region = paste0(region, ".")
+  }
+  token_url = paste0("https://", region, "api.cognitive.microsoft.com/",
+                     "sts/v1.0/issueToken")
+  return(token_url)
+}
+
+#' @rdname ms_get_tts_token
+#' @param token An authentication of class \code{token},
+#' likely from \code{\link{ms_get_tts_token}}
+#' @export
+ms_expired_token = function(token = NULL) {
+  if (!inherits(token, "token")) {
+    if (is.list(token)) {
+      token = token$token
+    }
+  }
+  ts = attr(token, "timestamp")
+  if (is.null(ts)) {
+    warning("Timestamp unknown for the token!  Please refresh")
+    return(TRUE)
+  }
+  d = difftime(Sys.time(), ts, "mins")
+  return(d >= 10)
+}

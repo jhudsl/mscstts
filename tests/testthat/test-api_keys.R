@@ -27,10 +27,10 @@ do.call("Sys.setenv", args = rm_keys)
 test_that(desc = "Making sure if API key is unset, then error", {
   skip_on_cran()
 
-  expect_error(get_ms_tts_key(error = TRUE))
-  expect_false(have_ms_tts_key())
-  expect_false(valid_ms_tts_key())
-  expect_null(get_ms_tts_key(error = FALSE))
+  expect_error(ms_get_tts_key(error = TRUE))
+  expect_false(ms_have_tts_key())
+  expect_false(ms_valid_tts_key())
+  expect_null(ms_get_tts_key(error = FALSE))
 
 })
 

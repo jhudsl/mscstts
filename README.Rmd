@@ -35,11 +35,11 @@ remotes::install_github("muschellij2/mscstts")
 
 ```{r, eval = TRUE}
 library(mscstts)
-if (have_ms_tts_key()) {
+if (ms_have_tts_key()) {
   res = ms_synthesize(
     script = "hey, how are you doing? I'm doing pretty good",
     output_format = "audio-16khz-128kbitrate-mono-mp3")
-  tmp <- "example.mp3"
+  tmp <- tempfile("example", fileext = ".mp3")
   writeBin(res$content, con = tmp)
   mp3 = tuneR::readMP3(tmp)
 }

@@ -10,14 +10,22 @@
 #' x = "asdf"
 #' class(x) = "token"
 #' print(x)
+#' attr(x, "timestamp") = Sys.time()
+#' print(x)
+#'
 #' print(x, reveal = TRUE)
 #' @method print token
 print.token = function(x, reveal = FALSE, ...) {
+  ts = attr(x, "timestamp")
+  if (!is.null(ts)) {
+    cat(paste0("Token Retrieved at: ", ts, "\n"))
+  }
   if (reveal) {
     print(as.character(x), ...)
   } else {
     cat("<hidden token>")
   }
+  invisible(x)
 }
 
 #' @export

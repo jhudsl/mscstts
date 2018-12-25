@@ -11,13 +11,13 @@
 #' @export
 #'
 #' @examples
-#' create_ssml("hey I really like things & dogs", escape = TRUE)
-#' create_ssml("hey I really like things")
-#' create_ssml('hey I <emphasis level="strong">really like</emphasis> things')
-#' create_ssml('hey I <emphasis level="strong">really like</emphasis> things',
+#' ms_create_ssml("hey I really like things & dogs", escape = TRUE)
+#' ms_create_ssml("hey I really like things")
+#' ms_create_ssml('hey I <emphasis level="strong">really like</emphasis> things')
+#' ms_create_ssml('hey I <emphasis level="strong">really like</emphasis> things',
 #' escape = TRUE)
 #'
-create_ssml = function(
+ms_create_ssml = function(
   script,
   gender = c("Female", "Male"),
   language = "en-US",
@@ -28,7 +28,7 @@ create_ssml = function(
     script = gsub("[<>/]", "", script)
     script = gsub("&", "and", script)
   }
-  xname = language_to_ms_name(language = language, gender = gender)
+  xname = ms_language_to_ms_name(language = language, gender = gender)
   stopifnot(length(language) == 1)
   gender = match.arg(gender)
   stopifnot(length(gender) == 1)

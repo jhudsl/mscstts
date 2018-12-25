@@ -23,5 +23,8 @@ Print method for token
 x = "asdf"
 class(x) = "token"
 print(x)
+attr(x, "timestamp") = Sys.time()
+print(x)
+
 print(x, reveal = TRUE)
 }
