@@ -37,7 +37,7 @@ below)
 7.  Should be able to create an F0 account (which is free - see below)
     if you hit the pricing tiers
 
-![](f0.png)<!-- -->
+![](man/figures/README-f0.png)<!-- -->
 
 ## Installation
 

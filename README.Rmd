@@ -32,7 +32,7 @@ You can get a TTS API key here: https://azure.microsoft.com/en-us/try/cognitive-
 7. Should be able to create an F0 account (which is free - see below) if you hit the pricing tiers
 
 ```{r, echo = FALSE, width = "10%"}
-knitr::include_graphics("f0.png")
+knitr::include_graphics("man/figures/README-f0.png")
 ```
 
 
