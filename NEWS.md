@@ -1,3 +1,8 @@
+# mscstts 0.5.0
+
+* Added `ms_regions` to allow for the region for tokens.
+* Now supports TTS proper, not really Bing. 
+
 # mscstts 0.4.0
 
 * Added `reveal` code for tokens.
