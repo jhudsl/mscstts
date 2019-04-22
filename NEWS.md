@@ -1,4 +1,4 @@
-# mscstts 0.5.2
+# mscstts 0.5.1
 
 * Added voice listing.
 * Added new output formats for audio that should be correct.
