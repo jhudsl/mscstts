@@ -16,6 +16,9 @@
 #' for more information
 #' @param escape Should non-standard characters be substituted?  Should not
 #' be used if \code{script} has SSML tags. See \code{\link{ms_create_ssml}}
+#' @param voice full voice name, usually from
+#' \code{\link{ms_language_to_ms_name}}.  Will override
+#' language and gender.
 #' @param ... Additional arguments to send to \code{\link{POST}}
 #'
 #' @return A list of the request, content, token, and `SSML`.
@@ -43,26 +46,30 @@ ms_synthesize = function(
   api_key = NULL,
   gender = c("Female", "Male"),
   language = "en-US",
+  voice = NULL,
   output_format = c("raw-16khz-16bit-mono-pcm", "raw-8khz-8bit-mono-mulaw",
-  "riff-8khz-8bit-mono-alaw", "riff-8khz-8bit-mono-mulaw",
-  "riff-16khz-16bit-mono-pcm", "audio-16khz-128kbitrate-mono-mp3",
-  "audio-16khz-64kbitrate-mono-mp3", "audio-16khz-32kbitrate-mono-mp3",
-  "raw-24khz-16bit-mono-pcm", "riff-24khz-16bit-mono-pcm",
-  "audio-24khz-160kbitrate-mono-mp3", "audio-24khz-96kbitrate-mono-mp3",
-  "audio-24khz-48kbitrate-mono-mp3"),
+                    "riff-8khz-8bit-mono-alaw", "riff-8khz-8bit-mono-mulaw",
+                    "riff-16khz-16bit-mono-pcm", "audio-16khz-128kbitrate-mono-mp3",
+                    "audio-16khz-64kbitrate-mono-mp3", "audio-16khz-32kbitrate-mono-mp3",
+                    "raw-24khz-16bit-mono-pcm", "riff-24khz-16bit-mono-pcm",
+                    "audio-24khz-160kbitrate-mono-mp3", "audio-24khz-96kbitrate-mono-mp3",
+                    "audio-24khz-48kbitrate-mono-mp3"),
   escape = FALSE,
   region = NULL,
   api = c("tts", "bing"),
   ...
 ){
 
-  L = ms_validate_language_gender(
-    language = language,
-    gender = gender)
+  if (!is.null(voice)) {
+    L = ms_voice_info(voice)
+  } else {
+    L = ms_validate_language_gender(
+      language = language,
+      gender = gender)
+  }
   language = L$language
   gender = L$gender
-  xname = L$full_name
-
+  xname = L$full_name[1]
 
   synth_url = ms_synthesize_api_url(
     api = api,
@@ -82,8 +89,12 @@ ms_synthesize = function(
 
   ctype = content_type("application/ssml+xml")
 
-  ssml = ms_create_ssml(script = script, gender = gender, language = language,
-                        escape = escape)
+  ssml = ms_create_ssml(
+    script = script,
+    gender = gender,
+    language = language,
+    voice = voice,
+    escape = escape)
 
   if (nchar(ssml) > 1024) {
     cat(ssml)

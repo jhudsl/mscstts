@@ -17,6 +17,7 @@ ms_language_to_ms_name = function(
     language = language,
     gender = gender)
   xname = L$full_name
+  xname = xname[1]
   return(xname)
 }
 
@@ -42,3 +43,5 @@ ms_validate_language_gender = function(
   return(list(language = language, gender = gender,
               full_name = xname))
 }
+
+

@@ -10,7 +10,7 @@
 Services Token from API Key}
 \usage{
 ms_synthesize(script, token = NULL, api_key = NULL,
-  gender = c("Female", "Male"), language = "en-US",
+  gender = c("Female", "Male"), language = "en-US", voice = NULL,
   output_format = c("raw-16khz-16bit-mono-pcm",
   "raw-8khz-8bit-mono-mulaw", "riff-8khz-8bit-mono-alaw",
   "riff-8khz-8bit-mono-mulaw", "riff-16khz-16bit-mono-pcm",
@@ -42,6 +42,10 @@ provided.}
 
 \item{language}{Language to be spoken,
 must be from \code{\link{ms_language_codes}}}
+
+\item{voice}{full voice name, usually from
+\code{\link{ms_language_to_ms_name}}.  Will override
+language and gender.}
 
 \item{output_format}{Format of the output, see
 \url{https://docs.microsoft.com/en-us/azure/cognitive-services/speech/api-reference-rest/bingvoiceoutput}

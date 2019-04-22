@@ -2,13 +2,20 @@
 % Please edit documentation in R/create_ssml.R
 \name{ms_create_ssml}
 \alias{ms_create_ssml}
+\alias{ms_voice_info}
 \title{Create SSML for Passing to Synthesize}
 \usage{
-ms_create_ssml(script, gender = c("Female", "Male"),
+ms_create_ssml(script, voice = NULL, gender = c("Female", "Male"),
   language = "en-US", escape = FALSE)
+
+ms_voice_info(voice)
 }
 \arguments{
 \item{script}{A character vector of lines to be spoken}
+
+\item{voice}{full voice name, usually from
+\code{\link{ms_language_to_ms_name}}.  Will override
+language and gender.}
 
 \item{gender}{Sex of the Speaker}
 
