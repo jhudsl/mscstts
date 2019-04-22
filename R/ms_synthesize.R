@@ -43,14 +43,13 @@ ms_synthesize = function(
   api_key = NULL,
   gender = c("Female", "Male"),
   language = "en-US",
-  output_format = c( "raw-16khz-16bit-mono-pcm" ,
-                     "ssml-16khz-16bit-mono-tts",
-                     "audio-16khz-16kbps-mono-siren",
-                     "riff-16khz-16kbps-mono-siren",
-                     "riff-16khz-16bit-mono-pcm",
-                     "audio-16khz-128kbitrate-mono-mp3",
-                     "audio-16khz-64kbitrate-mono-mp3",
-                     "audio-16khz-32kbitrate-mono-mp3"),
+  output_format = c("raw-16khz-16bit-mono-pcm", "raw-8khz-8bit-mono-mulaw",
+  "riff-8khz-8bit-mono-alaw", "riff-8khz-8bit-mono-mulaw",
+  "riff-16khz-16bit-mono-pcm", "audio-16khz-128kbitrate-mono-mp3",
+  "audio-16khz-64kbitrate-mono-mp3", "audio-16khz-32kbitrate-mono-mp3",
+  "raw-24khz-16bit-mono-pcm", "riff-24khz-16bit-mono-pcm",
+  "audio-24khz-160kbitrate-mono-mp3", "audio-24khz-96kbitrate-mono-mp3",
+  "audio-24khz-48kbitrate-mono-mp3"),
   escape = FALSE,
   region = NULL,
   api = c("tts", "bing"),
@@ -102,8 +101,40 @@ ms_synthesize = function(
     request = res,
     ssml = ssml,
     content = out,
-    token = token)
+    token = token,
+    output_format = output_format
+  )
   return(L)
+}
+
+#' Read Synthesized output
+#'
+#' @param output List from \code{\link{ms_synthesize}} with elements
+#' \code{output_format} and \code{content}
+#'
+#' @note The \code{tuneR} package cannot read all different types of
+#' the output here.
+#'
+#' @return A Wave Object
+#' @export
+ms_read_synthesis = function(output) {
+  tmp = tempfile()
+  writeBin(output$content, con = tmp)
+  output_format = output$output_format
+  wav = grepl("riff", tolower(output_format))
+  mp3 = grepl("mp3", tolower(output_format))
+  if (!wav & !mp3) {
+    warning("No format determined, assuming it's a WAV")
+    wav = TRUE
+  }
+
+  if (wav) {
+    out = tuneR::readWave(tmp)
+  }
+  if (mp3) {
+    out = tuneR::readMP3(tmp)
+  }
+  return(out)
 }
 
 
