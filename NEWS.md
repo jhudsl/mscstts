@@ -1,3 +1,8 @@
+# mscstts 0.5.2
+
+* Added voice listing.
+* Added new output formats for audio that should be correct.
+
 # mscstts 0.5.0
 
 * Added `ms_regions` to allow for the region for tokens.
