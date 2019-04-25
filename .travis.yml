@@ -6,15 +6,13 @@ after_success: if [ "$TRAVIS_OS_NAME" == "linux" ]; then Rscript -e 'covr::codec
 warnings_are_errors: true
 before_deploy: if [ "$TRAVIS_OS_NAME" == "osx" ]; then rm -f *.tar.gz; fi
 r_check_args: "--as-cran --install-args=--build"
-
 deploy:
   provider: releases
-  skip_cleanup: yes
-  file_glob: yes
-  api_key:
-    secure: "y1MlW3GnSyBQMWPRHnAKm4X+EHla6n/9FqopAJtcPFNkyrMCVWdJqKEAq7JLyz2n/1B5S4dsEgnfAJyVuwtuwvtNto4wMg7U2E2cr7WNmhc4/fvFvlIYmxTBMrGgFuNqSpTUK5gfnCdNbGGC5N0IGoGiAgvDhbnQNPcGMdKSAcoJ8n+k3hhjgMUznD+0efnXmmMpt+6/qYvYZzp1DmkvZbeZw4K34UZdG85UHmmLm9ad7lY+ahrB9sMSr8PNzQ3uXb2a4oZNgviqJaHM0VaRfCsqkUtMC7JMC2gQygIY5j0+tXlKCBPqYL6cVNr/pHkecJ8Q60Fg/BcL18RYPAxmbDP+Hwcwq8HaBa7Osm7YAX4oeAw3dYLhllvj+54AR3XMfbXscBU/34xjIGmUh9Fbl3FKgO7V8h7TitHM1WrNQxLJ79QeM4PPPRyKVQc1roRH8p2bVKjqAjEGgTCCDfqvxHLdVETnAHFuttNzwhNQQzZN2fVVOq9ntY9Ar+J0xLsXwaE2nrkYRRfleKohM7zUlyhbhJc+sYFzwKOVe9c7Hvl5Kq1LT71bgR+0MKvs/yTQ8U1CobCYXLRUwW5Uz+EtvAe48h2a6R7GKsM2qy1KWgiwavjn6GpuBlC55+17hC8hlIzniO8nmNnBSiyABtFqtqsHjYaqQf9sWvrd0ex19NI="
+  skip_cleanup: true
+  file_glob: true
+  api_key: 
+    secure: YJE5harBiqjeYNs66lXd6aCWk22NXm0lVO3P6/+4AjvxYRmUwfUE3PzMjp+OjlBWHd+Yq0p0Qu5Ml8+850/Mh5uuDlRmsnwPPtfMb5hn4Ag2k437MYRWIJynPDK5WvozeA95md3pjfHZAsvE8CnC6w7QOou876scdYKthi6dImuH7NIjAEQ1lJypUiOGj+S/Q16LHVTdc58sUrGAIho/L28IqX9qdpVNEz5GtIe9rQpDKByRFKyJV43f65qpWWuaUn3sfF0A2pFk8/6+tVUJslARQBO7veKjnK+m2+WVRAaw4LKMyUcLKGWi4au5/qy6ftDEVa5CC/y2WfHEs44DzFoxEjPy3IdpbGxfuYDsaOiAwvISFAmR7hVPeCGGx9SG/DdVowYqJ+Pxu7WPLtVNMkNLs1dRI0cSBnto/YJg8Np+nirEqWNeKPTJRQxvd3lHK6R9EIOBAMTRYmxTLylQ9HGSzMcK2qAIn75+mQaRoZN8jtiIM9Q9AGE0wLMguqDxIJ9K8rLo3fYHF9xFRLbvBgOf1vkbA18AwrY0JNAWgNOpPeS+tRM4IlRkW0x+yAiwtG/pyLIX4zFmJ5qM+jwXBhu6inuGg24XFDND77HYtFe60GRc8FMo11BuJNMwPmpHM5x3GoLAi0UQ6iZ04jT6MGxf9VR0kzSAyLCCdRMmhgw=
   file: mscstts*.t*gz
-  'on':
-    tags: yes
+  on:
+    tags: true
     repo: muschellij2/mscstts
-
