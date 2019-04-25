@@ -62,6 +62,6 @@ if (ms_have_tts_key()) {
 }
 testthat::expect_true(file.size(tmp) > 50000)
 if (interactive()) {
-  tuner::play(mp3, player = "play")
+  tuneR::play(mp3, player = "play")
 }
 ```

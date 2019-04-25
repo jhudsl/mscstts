@@ -1,5 +1,5 @@
 ---
-  output: github_document
+output: github_document
 ---
 
 [![Travis build status](https://travis-ci.com/muschellij2/mscstts.svg?branch=master)](https://travis-ci.com/muschellij2/mscstts)
@@ -60,6 +60,6 @@ if (ms_have_tts_key()) {
 }
 testthat::expect_true(file.size(tmp) > 50000)
 if (interactive()) {
-  tuner::play(mp3, player = "play")
+  tuneR::play(mp3, player = "play")
 }
 ```
