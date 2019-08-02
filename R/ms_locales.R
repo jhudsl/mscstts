@@ -575,15 +575,15 @@ ms_locale_df = function() {
   #                     "Chinese (Mandarin, Taiwanese)")), .Names = c("code", "language"
   #                     ), row.names = c(NA, 29L), class = "data.frame")
   df = structure(list(
-    code = c("ar-EG", "ar-SA", "bg-BG", "ca-ES", "cs-CZ",
+    code = c("ar-XA", "ar-EG", "ar-SA", "bg-BG", "ca-ES", "cs-CZ",
              "da-DK", "de-AT", "de-CH", "de-DE", "el-GR", "en-AU", "en-CA",
              "en-GB", "en-IE", "en-IN", "en-US", "es-ES", "es-MX", "fi-FI",
              "fr-CA", "fr-CH", "fr-FR", "he-IL", "hi-IN", "hr-HR", "hu-HU",
              "id-ID", "it-IT", "ja-JP", "ko-KR", "ms-MY", "nb-NO", "nl-NL",
              "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", "sk-SK", "sl-SI",
              "sv-SE", "ta-IN", "te-IN", "th-TH", "tr-TR", "vi-VN", "zh-CN",
-             "zh-HK", "zh-TW"),
-    language = c("Arabic (Egypt)", "Arabic (Saudi Arabia)",
+             "zh-HK", "zh-TW", "fil-PH", "uk-UA"),
+    language = c("Arabic", "Arabic (Egypt)", "Arabic (Saudi Arabia)",
                  "Bulgarian", "Catalan (Spain)", "Czech", "Danish", "German (Austria)",
                  "German (Switzerland)", "German (Germany)", "Greek", "English (Australia)",
                  "English (Canada)", "English (UK)", "English (Ireland)", "English (India)",
@@ -594,7 +594,8 @@ ms_locale_df = function() {
                  "Dutch", "Polish", "Portuguese (Brazil)", "Portuguese (Portugal)",
                  "Romanian", "Russian", "Slovak", "Slovenian", "Swedish", "Tamil (India)",
                  "Telugu (India)", "Thai", "Turkish", "Vietnamese", "Chinese (Mainland)",
-                 "Chinese (Hong Kong)", "Chinese (Taiwan)")),
+                 "Chinese (Hong Kong)", "Chinese (Taiwan)",
+                 "Filipino (Philippines)", "Ukrainian (Ukraine)")),
     row.names = c(NA,
                   -49L),
     class = "data.frame")
