@@ -23,21 +23,32 @@ See the documentation here:
 
 You can get a TTS API key here:
 <https://azure.microsoft.com/en-us/try/cognitive-services/>. The API you
-need to get one from is Bing Speech. (This will be deprecated\! See
-below)
+need to get one from is Cognitive Services, Speech.
 
 1.  Create an Azure account
 2.  Go to
     <https://portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices>.
     If that works, skip to step 5.
 3.  Go to <https://portal.azure.com/#home>
-4.  Click `+ Create a Resource`
+4.  Click \`+ Create a Resource\`
 5.  Search “Speech”
-6.  Hit `+ Create`
+6.  Hit \`+ Create\`
 7.  Should be able to create an F0 account (which is free - see below)
     if you hit the pricing tiers
 
-![](man/figures/README-f0.png)<!-- -->
+<img src="man/figures/README-f0.png" width="382" />
+
+### Setting up your API key
+
+You can set up your API key in a number of ways (where `XXX` is your API
+key):
+
+1.  Edit `~/.Renviron` and set `MS_TTS_API_KEY = "XXXX"`
+2.  In `R`, use `options(ms_tts_key = "XXXX")`.
+3.  Set `export MS_TTS_API_KEY=XXXX` in `.bash_profile`/`.bashrc` if
+    you’re using `R` in the terminal.
+4.  Pass `api_key = "XXXX"` in arguments of functions such as
+    `ms_list_voices(api_key = "XXXX")`.
 
 ## Installation
 
