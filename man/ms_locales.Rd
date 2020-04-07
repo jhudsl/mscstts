@@ -21,6 +21,10 @@ A list of Locales and the Speech Voices
 \description{
 Locales for Microsoft Translate
 }
+\note{
+This is generated from the JSON output of
+\code{\link{ms_list_voices}}
+}
 \examples{
 ms_locales()
 }
