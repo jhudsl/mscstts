@@ -71,13 +71,14 @@ ms_synthesize = function(
   gender = L$gender
   xname = L$full_name[1]
 
+  region = ms_region(region)
   synth_url = ms_synthesize_api_url(
     api = api,
     region = region
   )
 
   if (is.null(token)) {
-    token = ms_get_tts_token(api_key = api_key)$token
+    token = ms_get_tts_token(api_key = api_key, region = region)$token
   }
 
   auth_hdr = add_headers(
