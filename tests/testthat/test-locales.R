@@ -18,13 +18,14 @@ testthat::test_that("Check locales are equal to ms_locales", {
     index = which(index)
     tab = tab[[index]]
 
-    sub_tab = tab %>%
-      select(Locale, Language)
-    sub_tab = sub_tab %>%
-      mutate(Locale = gsub("[*]", "", Locale)) %>%
-      distinct %>%
-      filter(!(Locale == "" & Language == "")) %>%
-      rename(code = Locale, language = Language)
+    sub_tab = tab[, c("Locale", "Language")]
+    sub_tab$Locale = gsub("[*]", "",     sub_tab$Locale)
+    sub_tab = unique(sub_tab)
+    sub_tab = sub_tab[!(sub_tab$Locale == "" & sub_tab$Language == ""),]
+    cn = colnames(sub_tab)
+    cn[ cn == "Locale"] = "code"
+    cn[ cn == "Language"] = "language"
+    colnames(sub_tab) = cn
     df = ms_locale_df()
 
     testthat::expect_equal(sort(unique(sub_tab$language)),
