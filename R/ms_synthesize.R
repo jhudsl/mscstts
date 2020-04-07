@@ -77,7 +77,8 @@ ms_synthesize = function(
   )
 
   if (is.null(token)) {
-    token = ms_get_tts_token(api_key = api_key)$token
+    token = ms_get_tts_token(api_key = api_key,
+                             region = region)$token
   }
 
   auth_hdr = add_headers(

@@ -30,7 +30,8 @@ ms_list_voices = function(
                ".tts.speech.microsoft.com/",
                "cognitiveservices/voices/list")
   if (is.null(token)) {
-    token = ms_get_tts_token(api_key = api_key)$token
+    token = ms_get_tts_token(api_key = api_key,
+                             region = region)$token
   }
 
   auth_hdr = httr::add_headers(

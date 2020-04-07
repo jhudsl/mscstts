@@ -5,11 +5,9 @@
 \alias{ms_validate_language_gender}
 \title{Language and Gender to Microsoft Voice Name}
 \usage{
-ms_language_to_ms_name(language = "en-US", gender = c("Female",
-  "Male"))
+ms_language_to_ms_name(language = "en-US", gender = c("Female", "Male"))
 
-ms_validate_language_gender(language = "en-US", gender = c("Female",
-  "Male"))
+ms_validate_language_gender(language = "en-US", gender = c("Female", "Male"))
 }
 \arguments{
 \item{language}{A language code, see \code{\link{ms_language_codes}}}

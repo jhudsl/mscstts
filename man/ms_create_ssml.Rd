@@ -5,8 +5,13 @@
 \alias{ms_voice_info}
 \title{Create SSML for Passing to Synthesize}
 \usage{
-ms_create_ssml(script, voice = NULL, gender = c("Female", "Male"),
-  language = "en-US", escape = FALSE)
+ms_create_ssml(
+  script,
+  voice = NULL,
+  gender = c("Female", "Male"),
+  language = "en-US",
+  escape = FALSE
+)
 
 ms_voice_info(voice)
 }
