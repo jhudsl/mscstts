@@ -60,6 +60,7 @@ ms_synthesize = function(
   ...
 ){
 
+  region = ms_region(region)
   if (!is.null(voice)) {
     L = ms_voice_info(voice)
   } else {
