@@ -167,11 +167,25 @@ ms_region = function(region = ms_regions()) {
 #' @examples
 #' ms_regions()
 ms_regions = function() {
-  c("westus", "eastasia", "northeurope",
+  c("westus",
     "westus2",
+    "australiaeast",
+    "brazilsouth",
+    "canadacentral",
+    "centralus",
+    "eastasia",
     "eastus",
     "eastus2",
+    "francecentral",
+    "centralindia",
+    "japaneast",
+    "japanwest",
+    "koreacentral",
+    "northcentralus",
+    "northeurope",
+    "southcentralus",
     "southeastasia",
+    "uksouth",
     "westeurope")
 }
 
