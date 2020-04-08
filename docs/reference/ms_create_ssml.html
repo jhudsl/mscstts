@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mscstts</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.3</span>
       </span>
     </div>
 
@@ -117,8 +117,13 @@
     <p>Create SSML for Passing to Synthesize</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ms_create_ssml</span>(<span class='no'>script</span>, <span class='kw'>voice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>gender</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Female"</span>, <span class='st'>"Male"</span>),
-  <span class='kw'>language</span> <span class='kw'>=</span> <span class='st'>"en-US"</span>, <span class='kw'>escape</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+    <pre class="usage"><span class='fu'>ms_create_ssml</span>(
+  <span class='no'>script</span>,
+  <span class='kw'>voice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>gender</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Female"</span>, <span class='st'>"Male"</span>),
+  <span class='kw'>language</span> <span class='kw'>=</span> <span class='st'>"en-US"</span>,
+  <span class='kw'>escape</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)
 
 <span class='fu'>ms_voice_info</span>(<span class='no'>voice</span>)</pre>
 

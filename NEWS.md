@@ -1,3 +1,8 @@
+# mscstts 0.5.3
+
+* Updated tests and locales.
+* Added passthrough for `regions` for tokens.
+
 # mscstts 0.5.1
 
 * Added voice listing.

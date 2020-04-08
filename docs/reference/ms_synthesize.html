@@ -72,7 +72,7 @@ Services Token from API Key" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mscstts</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.3</span>
       </span>
     </div>
 
@@ -122,16 +122,24 @@ Services Token from API Key</h1>
 Services Token from API Key</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ms_synthesize</span>(<span class='no'>script</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>api_key</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>gender</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Female"</span>, <span class='st'>"Male"</span>), <span class='kw'>language</span> <span class='kw'>=</span> <span class='st'>"en-US"</span>, <span class='kw'>voice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>output_format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"raw-16khz-16bit-mono-pcm"</span>,
-  <span class='st'>"raw-8khz-8bit-mono-mulaw"</span>, <span class='st'>"riff-8khz-8bit-mono-alaw"</span>,
-  <span class='st'>"riff-8khz-8bit-mono-mulaw"</span>, <span class='st'>"riff-16khz-16bit-mono-pcm"</span>,
-  <span class='st'>"audio-16khz-128kbitrate-mono-mp3"</span>, <span class='st'>"audio-16khz-64kbitrate-mono-mp3"</span>,
-  <span class='st'>"audio-16khz-32kbitrate-mono-mp3"</span>, <span class='st'>"raw-24khz-16bit-mono-pcm"</span>,
-  <span class='st'>"riff-24khz-16bit-mono-pcm"</span>, <span class='st'>"audio-24khz-160kbitrate-mono-mp3"</span>,
-  <span class='st'>"audio-24khz-96kbitrate-mono-mp3"</span>, <span class='st'>"audio-24khz-48kbitrate-mono-mp3"</span>),
-  <span class='kw'>escape</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>region</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>api</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"tts"</span>, <span class='st'>"bing"</span>), <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>ms_synthesize</span>(
+  <span class='no'>script</span>,
+  <span class='kw'>token</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>api_key</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>gender</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Female"</span>, <span class='st'>"Male"</span>),
+  <span class='kw'>language</span> <span class='kw'>=</span> <span class='st'>"en-US"</span>,
+  <span class='kw'>voice</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>output_format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"raw-16khz-16bit-mono-pcm"</span>, <span class='st'>"raw-8khz-8bit-mono-mulaw"</span>,
+    <span class='st'>"riff-8khz-8bit-mono-alaw"</span>, <span class='st'>"riff-8khz-8bit-mono-mulaw"</span>, <span class='st'>"riff-16khz-16bit-mono-pcm"</span>,
+    <span class='st'>"audio-16khz-128kbitrate-mono-mp3"</span>, <span class='st'>"audio-16khz-64kbitrate-mono-mp3"</span>,
+    <span class='st'>"audio-16khz-32kbitrate-mono-mp3"</span>, <span class='st'>"raw-24khz-16bit-mono-pcm"</span>,
+    <span class='st'>"riff-24khz-16bit-mono-pcm"</span>, <span class='st'>"audio-24khz-160kbitrate-mono-mp3"</span>,
+    <span class='st'>"audio-24khz-96kbitrate-mono-mp3"</span>, <span class='st'>"audio-24khz-48kbitrate-mono-mp3"</span>),
+  <span class='kw'>escape</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>region</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>api</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"tts"</span>, <span class='st'>"bing"</span>),
+  <span class='no'>...</span>
+)
 
 <span class='fu'>ms_region</span>(<span class='kw'>region</span> <span class='kw'>=</span> <span class='fu'>ms_regions</span>())
 
@@ -224,8 +232,11 @@ then see below example</p>
 }
 
 }
-<span class='fu'>ms_regions</span>()</div><div class='output co'>#&gt; [1] "westus"        "eastasia"      "northeurope"   "westus2"      
-#&gt; [5] "eastus"        "eastus2"       "southeastasia" "westeurope"   </div></pre>
+<span class='fu'>ms_regions</span>()</div><div class='output co'>#&gt;  [1] "westus"         "westus2"        "australiaeast"  "brazilsouth"   
+#&gt;  [5] "canadacentral"  "centralus"      "eastasia"       "eastus"        
+#&gt;  [9] "eastus2"        "francecentral"  "centralindia"   "japaneast"     
+#&gt; [13] "japanwest"      "koreacentral"   "northcentralus" "northeurope"   
+#&gt; [17] "southcentralus" "southeastasia"  "uksouth"        "westeurope"    </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
