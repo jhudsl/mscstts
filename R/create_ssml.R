@@ -63,7 +63,7 @@ ms_create_ssml = function(
 ms_voice_info = function(voice) {
   stopifnot(length(voice) == 1 & is.character(voice))
   df = ms_locale_df()
-  keep = df$locale %in% voice
+  keep = df$locale %in% voice | df$short_name %in% voice
   if (!any(keep)) {
     stop("Voice given is not a recognized voice! See ms_locale_df()")
   }
@@ -71,6 +71,6 @@ ms_voice_info = function(voice) {
   df = df[1, , drop = FALSE]
   L = list(gender = df$Gender,
            full_name = df$locale,
-           language = df$language)
+           language = df$code)
   return(L)
 }
