@@ -13,7 +13,7 @@ ms_create_ssml(
   escape = FALSE
 )
 
-ms_voice_info(voice)
+ms_voice_info(voice, token = NULL, api_key = NULL, region = NULL)
 }
 \arguments{
 \item{script}{A character vector of lines to be spoken}
@@ -29,6 +29,16 @@ must be from \code{\link{ms_language_codes}}}
 
 \item{escape}{Should non-standard characters be substituted?  Should not
 be used if \code{script} has SSML tags}
+
+\item{token}{An authentication token, base-64 encoded usually from
+\code{\link{ms_get_tts_token}}.  If not provided, will be created from
+\code{\link{ms_get_tts_token}}}
+
+\item{api_key}{Microsoft Cognitive Services API key, if token is not
+provided.}
+
+\item{region}{Subscription region for your key.
+See \url{https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech}}
 }
 \value{
 A character string of the text and SSML markup

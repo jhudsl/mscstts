@@ -62,7 +62,10 @@ ms_synthesize = function(
 
   region = ms_region(region)
   if (!is.null(voice)) {
-    L = ms_voice_info(voice)
+    L = ms_voice_info(voice,
+                      token = token,
+                      api_key = api_key,
+                      region = region)
   } else {
     L = ms_validate_language_gender(
       language = language,

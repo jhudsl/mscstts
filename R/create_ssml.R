@@ -59,13 +59,29 @@ ms_create_ssml = function(
 }
 
 #' @rdname ms_create_ssml
+#' @param api_key Microsoft Cognitive Services API key, if token is not
+#' provided.
+#' @param script A character vector of lines to be spoken
+#' @param token An authentication token, base-64 encoded usually from
+#' \code{\link{ms_get_tts_token}}.  If not provided, will be created from
+#' \code{\link{ms_get_tts_token}}
+#' @param region Subscription region for your key.
+#' See \url{https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech}
 #' @export
-ms_voice_info = function(voice) {
+ms_voice_info = function(voice,
+                         token = NULL,
+                         api_key = NULL,
+                         region = NULL
+                         ) {
   stopifnot(length(voice) == 1 & is.character(voice))
   df = ms_locale_df()
   keep = df$locale %in% voice | df$short_name %in% voice
   if (!any(keep)) {
-    stop("Voice given is not a recognized voice! See ms_locale_df()")
+    df = ms_list_voices(region = region, api_key = api_key, token = token)
+    keep = df$locale %in% voice | df$short_name %in% voice
+    if (!any(keep)) {
+      stop("Voice given is not a recognized voice! See ms_locale_df()")
+    }
   }
   df = df[ keep, , drop = FALSE]
   df = df[1, , drop = FALSE]
