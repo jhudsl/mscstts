@@ -1,5 +1,9 @@
 # mscstts 0.5.3
 
+* Updated fix for test after https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support changed.
+
+# mscstts 0.5.3
+
 * Updated tests and locales.
 * Added passthrough for `regions` for tokens.
 

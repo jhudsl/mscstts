@@ -9,10 +9,10 @@ testthat::test_that("Check locales are equal to ms_locales", {
     doc = xml2::read_html(url)
     tab = rvest::html_table(doc)
     index = sapply(tab, function(x) {
-      if (!"Full service name mapping" %in% colnames(x)) {
+      if (!"Voice name" %in% colnames(x)) {
         return(FALSE)
       }
-      x = x[, "Full service name mapping", drop = TRUE]
+      x = x[, "Voice name", drop = TRUE]
       !any(grepl("Neural", x))
     })
     index = which(index)
