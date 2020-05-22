@@ -1,3 +1,7 @@
+# mscstts 0.5.4
+
+* Fixed bug in Catalan (Spain) vs. Catalan.
+
 # mscstts 0.5.3
 
 * Updated fix for test after https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support changed.

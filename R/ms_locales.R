@@ -750,7 +750,7 @@ ms_locale_df = function() {
              "sv-SE", "ta-IN", "te-IN", "th-TH", "tr-TR", "vi-VN", "zh-CN",
              "zh-HK", "zh-TW", "fil-PH", "uk-UA"),
     language = c("Arabic", "Arabic (Egypt)", "Arabic (Saudi Arabia)",
-                 "Bulgarian", "Catalan (Spain)", "Czech", "Danish", "German (Austria)",
+                 "Bulgarian", "Catalan", "Czech", "Danish", "German (Austria)",
                  "German (Switzerland)", "German (Germany)", "Greek", "English (Australia)",
                  "English (Canada)", "English (UK)", "English (Ireland)", "English (India)",
                  "English (US)", "Spanish (Spain)", "Spanish (Mexico)", "Finnish",
