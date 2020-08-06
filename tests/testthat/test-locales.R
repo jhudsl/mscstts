@@ -26,7 +26,7 @@ testthat::test_that("Check locales are equal to ms_locales", {
     cn[ cn == "Locale"] = "code"
     cn[ cn == "Language"] = "language"
     colnames(sub_tab) = cn
-    df = ms_locale_df()
+    df = mscstts::ms_locale_df()
 
     testthat::expect_equal(sort(unique(sub_tab$language)),
                            sort(unique(df$language)))
