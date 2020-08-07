@@ -15,7 +15,7 @@ ms_list_voices(token = NULL, api_key = NULL, region = NULL, ...)
 provided.}
 
 \item{region}{Subscription region for your key.
-See \url{https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech}}
+See \url{https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/overview}}
 
 \item{...}{Additional arguments to send to \code{\link{GET}}}
 }

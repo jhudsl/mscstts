@@ -23,7 +23,7 @@ ms_valid_tts_key(api_key = NULL, region = ms_regions())
 
 \item{region}{Subscription region for your key.
 See
-\url{https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech}}
+\url{https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/overview}}
 }
 \value{
 API key

@@ -1,3 +1,7 @@
+# mscstts 0.5.6
+
+* Fixed bug in simpilified Chinese capitalization.
+
 # mscstts 0.5.4
 
 * Fixed bug in Catalan (Spain) vs. Catalan.

@@ -17,7 +17,7 @@ obtain a (free) API key. Without an API key, this package will not work
 properly.
 
 See the documentation here:
-<https://docs.microsoft.com/en-us/azure/cognitive-services/speech/home>
+<https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/overview>
 
 ## Getting an API key
 

@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 # mscstts Package: 
 The goal of `mscstts` is to provide an R Client for the Microsoft Cognitive Services Text to Speech REST API, including voice synthesis. A valid account MUST be registered at the Microsoft Cognitive Services website <https://www.microsoft.com/cognitive-services/> in order to obtain a (free) API key. Without an API key, this package will not work properly.
 
-See the documentation here: https://docs.microsoft.com/en-us/azure/cognitive-services/speech/home
+See the documentation here: https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/overview
 
 ## Getting an API key
 

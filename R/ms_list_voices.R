@@ -7,7 +7,7 @@
 #' \code{\link{ms_get_tts_token}}.  If not provided, will be created from
 #' \code{\link{ms_get_tts_token}}
 #' @param region Subscription region for your key.
-#' See \url{https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech}
+#' See \url{https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/overview}
 #' @param ... Additional arguments to send to \code{\link{GET}}
 #'
 #' @return A \code{data.frame} of the names and their long names.

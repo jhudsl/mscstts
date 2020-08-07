@@ -13,7 +13,7 @@
 #' \code{api_key = Sys.getenv('MS_TTS_API_KEY2")}
 #' @param region Subscription region for your key.
 #' See
-#' \url{https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech}
+#' \url{https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/overview}
 #' @return API key
 #' @export
 #' @examples

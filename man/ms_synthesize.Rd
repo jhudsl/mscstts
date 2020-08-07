@@ -56,7 +56,7 @@ must be from \code{\link{ms_language_codes}}}
 language and gender.}
 
 \item{output_format}{Format of the output, see
-\url{https://docs.microsoft.com/en-us/azure/cognitive-services/speech/api-reference-rest/bingvoiceoutput}
+\url{https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/how-to-migrate-from-bing-speech}
 for more information}
 
 \item{escape}{Should non-standard characters be substituted?  Should not
