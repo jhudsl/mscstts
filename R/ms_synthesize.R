@@ -156,7 +156,7 @@ ms_read_synthesis = function(output) {
 
 #' @rdname ms_synthesize
 #' @param region Subscription region for your key.
-#' See \url{https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech}
+#' See \url{https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/overview#reference-docs}
 #'
 #' @export
 ms_region = function(region = ms_regions()) {
