@@ -79,7 +79,7 @@
 <div id="mscstts-package" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#mscstts-package" class="anchor"></a>mscstts Package:</h1></div>
-<p>The goal of <code>mscstts</code> is to provide an R Client for the Microsoft Cognitive Services Text to Speech REST API, including voice synthesis. A valid account MUST be registered at the Microsoft Cognitive Services website <a href="https://www.microsoft.com/cognitive-services/" class="uri">https://www.microsoft.com/cognitive-services/</a> in order to obtain a (free) API key. Without an API key, this package will not work properly.</p>
+<p>The goal of <code>mscstts</code> is to provide an R Client for the Microsoft Cognitive Services Text to Speech REST API, including voice synthesis. A valid account MUST be registered at the Microsoft Cognitive Services website <a href="https://azure.microsoft.com/en-us/services/cognitive-services/" class="uri">https://azure.microsoft.com/en-us/services/cognitive-services/</a> in order to obtain a (free) API key. Without an API key, this package will not work properly.</p>
 <p>See the documentation here: <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/overview" class="uri">https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/overview</a></p>
 <div id="getting-an-api-key" class="section level2">
 <h2 class="hasAnchor">
@@ -90,9 +90,11 @@
 <li>Go to <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" class="uri">https://portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices</a>. If that works, skip to step 5.</li>
 <li>Go to <a href="https://portal.azure.com/#home" class="uri">https://portal.azure.com/#home</a>
 </li>
-<li>Click `+ Create a Resource`</li>
+<li>Click <code>+ Create a Resource</code>
+</li>
 <li>Search “Speech”</li>
-<li>Hit `+ Create`</li>
+<li>Hit <code>+ Create</code>
+</li>
 <li>Should be able to create an F0 account (which is free - see below) if you hit the pricing tiers</li>
 </ol>
 <p><img src="reference/figures/README-f0.png" width="382"></p>
@@ -113,25 +115,25 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can install <code>mscstts</code> from GitHub with:</p>
-<div class="sourceCode" id="cb1"><pre class="r"><span class="co"># install.packages("remotes")</span>
-<span class="kw pkg">remotes</span><span class="kw ns">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"muschellij2/mscstts"</span>)</pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="co"># install.packages("remotes")</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"muschellij2/mscstts"</span>)</span></code></pre></div>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
-<div class="sourceCode" id="cb2"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">mscstts</span>)
-<span class="kw">if</span> (<span class="fu"><a href="reference/ms_get_tts_key.html">ms_have_tts_key</a></span>()) {
-  <span class="no">res</span> <span class="kw">=</span> <span class="fu"><a href="reference/ms_synthesize.html">ms_synthesize</a></span>(
-    <span class="kw">script</span> <span class="kw">=</span> <span class="st">"hey, how are you doing? I'm doing pretty good"</span>,
-    <span class="kw">output_format</span> <span class="kw">=</span> <span class="st">"audio-16khz-128kbitrate-mono-mp3"</span>)
-  <span class="no">tmp</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempfile</a></span>(<span class="st">"example"</span>, <span class="kw">fileext</span> <span class="kw">=</span> <span class="st">".mp3"</span>)
-  <span class="fu"><a href="https://rdrr.io/r/base/readBin.html">writeBin</a></span>(<span class="no">res</span>$<span class="no">content</span>, <span class="kw">con</span> <span class="kw">=</span> <span class="no">tmp</span>)
-  <span class="no">mp3</span> <span class="kw">=</span> <span class="kw pkg">tuneR</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/tuneR/man/readMP3.html">readMP3</a></span>(<span class="no">tmp</span>)
-}
-<span class="kw pkg">testthat</span><span class="kw ns">::</span><span class="fu"><a href="https://testthat.r-lib.org/reference/logical-expectations.html">expect_true</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/file.info.html">file.size</a></span>(<span class="no">tmp</span>) <span class="kw">&gt;</span> <span class="fl">50000</span>)
-<span class="kw">if</span> (<span class="fu"><a href="https://rdrr.io/r/base/interactive.html">interactive</a></span>()) {
-  <span class="kw pkg">tuneR</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/tuneR/man/play.html">play</a></span>(<span class="no">mp3</span>, <span class="kw">player</span> <span class="kw">=</span> <span class="st">"play"</span>)
-}</pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="kw">library</span>(mscstts)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="cf">if</span> (<span class="kw">ms_have_tts_key</span>()) {</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a>  res =<span class="st"> </span><span class="kw">ms_synthesize</span>(</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>    <span class="dt">script =</span> <span class="st">"hey, how are you doing? I'm doing pretty good"</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a>    <span class="dt">output_format =</span> <span class="st">"audio-16khz-128kbitrate-mono-mp3"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a>  tmp &lt;-<span class="st"> </span><span class="kw">tempfile</span>(<span class="st">"example"</span>, <span class="dt">fileext =</span> <span class="st">".mp3"</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a>  <span class="kw">writeBin</span>(res<span class="op">$</span>content, <span class="dt">con =</span> tmp)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a>  mp3 =<span class="st"> </span>tuneR<span class="op">::</span><span class="kw">readMP3</span>(tmp)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true"></a>}</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true"></a>testthat<span class="op">::</span><span class="kw">expect_true</span>(<span class="kw">file.size</span>(tmp) <span class="op">&gt;</span><span class="st"> </span><span class="dv">50000</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true"></a><span class="cf">if</span> (<span class="kw">interactive</span>()) {</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true"></a>  tuneR<span class="op">::</span><span class="kw">play</span>(mp3, <span class="dt">player =</span> <span class="st">"play"</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true"></a>}</span></code></pre></div>
 </div>
 </div>
 

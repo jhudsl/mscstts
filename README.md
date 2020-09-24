@@ -7,32 +7,36 @@ Status](https://ci.appveyor.com/api/projects/status/github/muschellij2/mscstts?b
 status](https://codecov.io/gh/muschellij2/mscstts/branch/master/graph/badge.svg)](https://codecov.io/github/muschellij2/mscstts?branch=master)
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# mscstts Package:
+mscstts Package:
+================
 
 The goal of `mscstts` is to provide an R Client for the Microsoft
 Cognitive Services Text to Speech REST API, including voice synthesis. A
 valid account MUST be registered at the Microsoft Cognitive Services
-website <https://www.microsoft.com/cognitive-services/> in order to
-obtain a (free) API key. Without an API key, this package will not work
-properly.
+website
+<a href="https://azure.microsoft.com/en-us/services/cognitive-services/" class="uri">https://azure.microsoft.com/en-us/services/cognitive-services/</a>
+in order to obtain a (free) API key. Without an API key, this package
+will not work properly.
 
 See the documentation here:
-<https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/overview>
+<a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/overview" class="uri">https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/overview</a>
 
-## Getting an API key
+Getting an API key
+------------------
 
 You can get a TTS API key here:
-<https://azure.microsoft.com/en-us/try/cognitive-services/>. The API you
-need to get one from is Cognitive Services, Speech.
+<a href="https://azure.microsoft.com/en-us/try/cognitive-services/" class="uri">https://azure.microsoft.com/en-us/try/cognitive-services/</a>.
+The API you need to get one from is Cognitive Services, Speech.
 
 1.  Create an Azure account
 2.  Go to
-    <https://portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices>.
+    <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" class="uri">https://portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices</a>.
     If that works, skip to step 5.
-3.  Go to <https://portal.azure.com/#home>
-4.  Click \`+ Create a Resource\`
+3.  Go to
+    <a href="https://portal.azure.com/#home" class="uri">https://portal.azure.com/#home</a>
+4.  Click `+ Create a Resource`
 5.  Search “Speech”
-6.  Hit \`+ Create\`
+6.  Hit `+ Create`
 7.  Should be able to create an F0 account (which is free - see below)
     if you hit the pricing tiers
 
@@ -50,29 +54,27 @@ key):
 4.  Pass `api_key = "XXXX"` in arguments of functions such as
     `ms_list_voices(api_key = "XXXX")`.
 
-## Installation
+Installation
+------------
 
 You can install `mscstts` from GitHub with:
 
-``` r
-# install.packages("remotes")
-remotes::install_github("muschellij2/mscstts")
-```
+    # install.packages("remotes")
+    remotes::install_github("muschellij2/mscstts")
 
-## Example
+Example
+-------
 
-``` r
-library(mscstts)
-if (ms_have_tts_key()) {
-  res = ms_synthesize(
-    script = "hey, how are you doing? I'm doing pretty good",
-    output_format = "audio-16khz-128kbitrate-mono-mp3")
-  tmp <- tempfile("example", fileext = ".mp3")
-  writeBin(res$content, con = tmp)
-  mp3 = tuneR::readMP3(tmp)
-}
-testthat::expect_true(file.size(tmp) > 50000)
-if (interactive()) {
-  tuneR::play(mp3, player = "play")
-}
-```
+    library(mscstts)
+    if (ms_have_tts_key()) {
+      res = ms_synthesize(
+        script = "hey, how are you doing? I'm doing pretty good",
+        output_format = "audio-16khz-128kbitrate-mono-mp3")
+      tmp <- tempfile("example", fileext = ".mp3")
+      writeBin(res$content, con = tmp)
+      mp3 = tuneR::readMP3(tmp)
+    }
+    testthat::expect_true(file.size(tmp) > 50000)
+    if (interactive()) {
+      tuneR::play(mp3, player = "play")
+    }
