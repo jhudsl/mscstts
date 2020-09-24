@@ -5,7 +5,7 @@ Title: R Client for the Microsoft Cognitive Services 'Text-to-Speech' REST API
 Description: R Client for the Microsoft Cognitive Services 
   'Text-to-Speech' REST API, including voice synthesis. A valid account 
   must be registered at the Microsoft Cognitive Services website 
-  <https://www.microsoft.com/cognitive-services/> in order to 
+  <https://azure.microsoft.com/services/cognitive-services/> in order to 
   obtain a (free) API key. Without an API key, this package will not 
   work properly.
 Authors@R: 

@@ -2,6 +2,7 @@
 
 * Removed parts of the test that need to be done live.
 * Need to add in Neural voices if possible.
+* Fixed URL redirect in DESCRIPTION.
 
 # mscstts 0.5.6
 
