@@ -85,7 +85,7 @@ ms_voice_info = function(voice,
   }
   df = df[ keep, , drop = FALSE]
   df = df[1, , drop = FALSE]
-  L = list(gender = df$Gender,
+  L = list(gender = df$gender,
            full_name = df$locale,
            language = df$code)
   return(L)

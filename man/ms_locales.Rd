@@ -27,4 +27,5 @@ This is generated from the JSON output of
 }
 \examples{
 ms_locales()
+ms_locale_df()
 }

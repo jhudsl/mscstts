@@ -32,4 +32,8 @@ res = ms_list_voices()
 }
 
 }
+
+\dontrun{
+res = ms_list_voices(region = "eastus")
+}
 }

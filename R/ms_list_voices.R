@@ -17,6 +17,10 @@
 #' }
 #'
 #' }
+#'
+#' \dontrun{
+#' res = ms_list_voices(region = "eastus")
+#' }
 #' @export
 ms_list_voices = function(
   token = NULL,

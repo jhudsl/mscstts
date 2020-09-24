@@ -34,8 +34,11 @@ ms_validate_language_gender = function(
   }
   locales = locales[[language]]
   n_locales = names(locales)
-  gender = match.arg(gender)
+  gender = tolower(gender)
+  gender = match.arg(gender, choices = c("female", "male"))
   stopifnot(length(gender) == 1)
+  gender = paste0(toupper(substr(gender, 1, 1)), substr(gender, 2, nchar(gender)))
+  gender = match.arg(gender, choices = c("Female", "Male"))
   if (!(gender %in% n_locales)) {
     stop(paste0("Gender ", gender, " not in locales for this language"))
   }

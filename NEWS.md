@@ -1,6 +1,11 @@
+# mscstts 0.6.0
+
+* Removed parts of the test that need to be done live.
+* Need to add in Neural voices if possible.
+
 # mscstts 0.5.6
 
-* Fixed bug in simpilified Chinese capitalization.
+* Fixed bug in simplified Chinese capitalization.
 
 # mscstts 0.5.4
 

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>List Voices — ms_list_voices • mscstts</title>
+<title>Names of Microsoft Locales — ms_locale_names • mscstts</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="List Voices — ms_list_voices" />
-<meta property="og:description" content="List Voices" />
+<meta property="og:title" content="Names of Microsoft Locales — ms_locale_names" />
+<meta property="og:description" content="Names of Microsoft Locales" />
 
 
 
@@ -111,57 +111,27 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>List Voices</h1>
-    <small class="dont-index">Source: <a href='https://github.com/muschellij2/mscstts/blob/master/R/ms_list_voices.R'><code>R/ms_list_voices.R</code></a></small>
-    <div class="hidden name"><code>ms_list_voices.Rd</code></div>
+    <h1>Names of Microsoft Locales</h1>
+    <small class="dont-index">Source: <a href='https://github.com/muschellij2/mscstts/blob/master/R/ms_locale_names.R'><code>R/ms_locale_names.R</code></a></small>
+    <div class="hidden name"><code>ms_locale_names.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>List Voices</p>
+    <p>Names of Microsoft Locales</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ms_list_voices</span>(<span class='kw'>token</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>api_key</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>region</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='no'>ms_locale_names</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>token</th>
-      <td><p>An authentication token, base-64 encoded usually from
-<code><a href='ms_get_tts_token.html'>ms_get_tts_token</a></code>.  If not provided, will be created from
-<code><a href='ms_get_tts_token.html'>ms_get_tts_token</a></code></p></td>
-    </tr>
-    <tr>
-      <th>api_key</th>
-      <td><p>Microsoft Cognitive Services API key, if token is not
-provided.</p></td>
-    </tr>
-    <tr>
-      <th>region</th>
-      <td><p>Subscription region for your key.
-See <a href='https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/overview'>https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/overview</a></p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Additional arguments to send to <code>GET</code></p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A <code>data.frame</code> of the names and their long names.</p>
+    <p>A <code>data.frame</code> with 2 columns:</p><dl'>
+<dt>code</dt><dd><p>the 5 character langugae code, separated by a hyphen, also referred to as a locale</p></dd>
+<dt>language</dt><dd><p>the name of the language</p></dd>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='kw'>if</span> (<span class='fu'><a href='ms_get_tts_key.html'>ms_have_tts_key</a></span>()) {
-<span class='no'>res</span> <span class='kw'>=</span> <span class='fu'>ms_list_voices</span>()
-}
+</dl>
 
-}
 
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='no'>res</span> <span class='kw'>=</span> <span class='fu'>ms_list_voices</span>(<span class='kw'>region</span> <span class='kw'>=</span> <span class='st'>"eastus"</span>)
-}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
