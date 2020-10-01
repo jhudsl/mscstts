@@ -1,7 +1,10 @@
 ## code to prepare `ms_locales_df` dataset goes here
 library(jsonlite)
-res = jsonlite::fromJSON(
-  '[
+if (mscstts::ms_have_tts_key()) {
+  res = mscstts::ms_list_voices()
+} else {
+  res = jsonlite::fromJSON(
+    '[
   {
     "Name": "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)",
     "DisplayName": "Hoda",
@@ -773,7 +776,9 @@ res = jsonlite::fromJSON(
     "VoiceType": "Standard"
   }
 ]'
-)
+  )
+
+}
 
 cn = colnames(res)
 cn[ cn == "Locale"] = "code"
