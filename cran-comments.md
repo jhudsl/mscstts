@@ -10,4 +10,4 @@
 * This is a new release.
 
 ---
-Fixed URL redirect in DESCRIPTION.
+Version bump to put on CRAN.
