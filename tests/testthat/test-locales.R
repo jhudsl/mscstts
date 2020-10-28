@@ -1,6 +1,6 @@
 testthat::context("Regions match Website for locales")
 testthat::test_that("Check locales are equal to ms_locales", {
-
+  testthat::skip_on_cran()
   if (requireNamespace("rvest", quietly = TRUE) &&
       requireNamespace("xml2", quietly = TRUE)) {
 
