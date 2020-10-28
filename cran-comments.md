@@ -10,4 +10,4 @@
 * This is a new release.
 
 ---
-Version bump to put on CRAN.
+Skipped test that was failing due to internet resource as it's not pertinent to the functioning of the package and giving multiple false positives.
