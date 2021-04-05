@@ -1,5 +1,6 @@
 ## code to prepare `ms_locales_df` dataset goes here
 library(jsonlite)
+library(dplyr)
 if (mscstts::ms_have_tts_key()) {
   res = mscstts::ms_list_voices()
 } else {
@@ -790,6 +791,11 @@ cn[ cn == "SampleRateHertz"] = "sample_rate"
 cn[ cn == "VoiceType"] = "voice_type"
 cn[ cn == "Gender"] = "gender"
 colnames(res) = cn
+
+res = res %>%
+  mutate(standard = voice_type == "Standard") %>%
+  dplyr::arrange(code, gender, dplyr::desc(standard), short_name) %>%
+  dplyr::select(-standard)
 
 ms_locales_df = res
 

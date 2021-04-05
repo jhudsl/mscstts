@@ -69,7 +69,9 @@ ms_locale_df = function() {
 
 
   res = mscstts::ms_locales_df
+  res$index = 1:nrow(res)
   res = merge(res, mscstts::ms_locale_names, by = "code", all.x = TRUE, sort = FALSE)
+  res = res[order(res$index),]
   return(res)
 }
 

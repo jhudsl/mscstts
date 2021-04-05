@@ -18,6 +18,7 @@ index = sapply(tab, function(x) {
 })
 index = which(index)
 tab = tab[[index]]
+colnames(tab) = trimws(sub("(BCP-47)", "", colnames(tab), fixed = TRUE))
 tab = tab %>%
   select(code = Locale, language= Language) %>%
   distinct() %>%
