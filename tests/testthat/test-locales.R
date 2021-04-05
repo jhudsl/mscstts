@@ -18,6 +18,11 @@ testthat::test_that("Check locales are equal to ms_locales", {
     })
     index = which(index)
     tab = tab[[index]]
+    colnames(tab) = sub("(BCP-47)", "", colnames(tab), fixed = TRUE)
+    colnames(tab) = trimws(colnames(tab))
+
+    Encoding(tab$Locale) = "UTF-8"
+    Encoding(tab$Language) = "UTF-8"
 
     sub_tab = tab[, c("Locale", "Language")]
     sub_tab$Locale = gsub("[*]", "",     sub_tab$Locale)
@@ -31,7 +36,8 @@ testthat::test_that("Check locales are equal to ms_locales", {
     df = mscstts::ms_locale_df()
     sub_tab$language = sub("Ã¥", "å", sub_tab$language)
 
-    testthat::expect_equal(sort(unique(sub_tab$language)),
-                           sort(unique(df$language)))
+    tab_lang = sort(unique(sub_tab$language))
+    df_lang = sort(unique(df$language))
+    testthat::expect_equal(tab_lang, df_lang)
   }
 })

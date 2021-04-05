@@ -68,6 +68,9 @@ if (ms_have_tts_key()) {
 }
 testthat::expect_true(file.size(tmp) > 50000)
 if (interactive()) {
-  tuneR::play(mp3, player = "play")
+  player = tuneR::getWavPlayer()
+  if (.Platform$OS.type == "windows" && is.null(player)) player = NULL
+  if (.Platform$OS.type != "windows" && is.null(player)) player = "play"
+  tuneR::play(mp3, player = player)
 }
 ```
