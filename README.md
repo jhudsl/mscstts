@@ -19,8 +19,8 @@ See the documentation here:
 ## Getting an API key
 
 You can get a TTS API key here:
-<https://azure.microsoft.com/en-us/try/cognitive-services/>. The API you
-need to get one from is Cognitive Services, Speech.
+<https://azure.microsoft.com/en-us/free/cognitive-services/>. The API
+you need to get one from is Cognitive Services, Speech.
 
 1.  Create an Azure account
 2.  Go to

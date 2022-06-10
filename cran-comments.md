@@ -4,4 +4,4 @@
 
 * This is a new release.
 ---
-Skipped test that was causing issue due to internet issues and non-relevant for functionality.
+Hotfix for URL issue
