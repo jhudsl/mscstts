@@ -17,7 +17,7 @@ testthat::test_that("Check locales are equal to ms_locales", {
       ifelse(any(grepl("Neural", x)), "neural", "regular")
     })
     keep = which(index %in% "regular")
-    if (length(regular) == 0) {
+    if (length(keep) == 0) {
       keep = which(index %in% "neural")
     }
     index = keep

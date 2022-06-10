@@ -1,8 +1,8 @@
 
 <!-- badges: start -->
+
 [![R-CMD-check](https://github.com/muschellij2/mscstts/workflows/R-CMD-check/badge.svg)](https://github.com/muschellij2/mscstts/actions)
 <!-- badges: end -->
-<!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # mscstts Package:
 
