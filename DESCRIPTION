@@ -1,6 +1,6 @@
 Type: Package
 Package: mscstts
-Version: 0.6.2
+Version: 0.6.3
 Title: R Client for the Microsoft Cognitive Services 'Text-to-Speech' REST API
 Description: R Client for the Microsoft Cognitive Services 
   'Text-to-Speech' REST API, including voice synthesis. A valid account 
@@ -26,7 +26,7 @@ Suggests:
     zoo
 URL: https://github.com/muschellij2/mscstts
 BugReports: https://github.com/muschellij2/mscstts/issues
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Imports: 
     httr,
     jsonlite,

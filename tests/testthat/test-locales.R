@@ -11,13 +11,26 @@ testthat::test_that("Check locales are equal to ms_locales", {
     # standard voices not neural
     index = sapply(tab, function(x) {
       if (!"Voice name" %in% colnames(x)) {
-        return(FALSE)
+        return(NA_character_)
       }
       x = x[, "Voice name", drop = TRUE]
-      !any(grepl("Neural", x))
+      ifelse(any(grepl("Neural", x)), "neural", "regular")
     })
-    index = which(index)
-    tab = tab[[index]]
+    keep = which(index %in% "regular")
+    if (length(regular) == 0) {
+      keep = which(index %in% "neural")
+    }
+    index = keep
+    tab = tab[index]
+    tab = lapply(tab, function(x) {
+      colnames(x) = sub("(BCP-47)", "", colnames(x), fixed = TRUE)
+      cn = colnames(x)
+      if (!all(c("Locale", "Language") %in% cn)) {
+        return(NULL)
+      }
+      x[, c("Locale", "Language")]
+    })
+    tab = do.call(rbind, tab)
     colnames(tab) = sub("(BCP-47)", "", colnames(tab), fixed = TRUE)
     colnames(tab) = trimws(colnames(tab))
 

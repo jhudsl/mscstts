@@ -41,23 +41,23 @@
 #' @export
 #' @importFrom httr POST add_headers stop_for_status content content_type
 ms_synthesize = function(
-  script,
-  token = NULL,
-  api_key = NULL,
-  gender = c("Female", "Male"),
-  language = "en-US",
-  voice = NULL,
-  output_format = c("raw-16khz-16bit-mono-pcm", "raw-8khz-8bit-mono-mulaw",
-                    "riff-8khz-8bit-mono-alaw", "riff-8khz-8bit-mono-mulaw",
-                    "riff-16khz-16bit-mono-pcm", "audio-16khz-128kbitrate-mono-mp3",
-                    "audio-16khz-64kbitrate-mono-mp3", "audio-16khz-32kbitrate-mono-mp3",
-                    "raw-24khz-16bit-mono-pcm", "riff-24khz-16bit-mono-pcm",
-                    "audio-24khz-160kbitrate-mono-mp3", "audio-24khz-96kbitrate-mono-mp3",
-                    "audio-24khz-48kbitrate-mono-mp3"),
-  escape = FALSE,
-  region = NULL,
-  api = c("tts", "bing"),
-  ...
+    script,
+    token = NULL,
+    api_key = NULL,
+    gender = c("Female", "Male"),
+    language = "en-US",
+    voice = NULL,
+    output_format = c("raw-16khz-16bit-mono-pcm", "raw-8khz-8bit-mono-mulaw",
+                      "riff-8khz-8bit-mono-alaw", "riff-8khz-8bit-mono-mulaw",
+                      "riff-16khz-16bit-mono-pcm", "audio-16khz-128kbitrate-mono-mp3",
+                      "audio-16khz-64kbitrate-mono-mp3", "audio-16khz-32kbitrate-mono-mp3",
+                      "raw-24khz-16bit-mono-pcm", "riff-24khz-16bit-mono-pcm",
+                      "audio-24khz-160kbitrate-mono-mp3", "audio-24khz-96kbitrate-mono-mp3",
+                      "audio-24khz-48kbitrate-mono-mp3"),
+    escape = FALSE,
+    region = NULL,
+    api = c("tts", "bing"),
+    ...
 ){
 
   region = ms_region(region)
@@ -163,7 +163,13 @@ ms_region = function(region = ms_regions()) {
   if (missing(region)) {
     region = getOption("ms_region")
   }
-  region = match.arg(region)
+  if (any(!region %in% ms_regions())) {
+    warning("Some regions not in ms_regions, use at your own risk")
+    stopifnot(length(region) >= 1)
+    region = region[1]
+  } else {
+    region = match.arg(region)
+  }
   return(region)
 }
 
@@ -197,7 +203,7 @@ ms_regions = function() {
 #' @rdname ms_synthesize
 #' @export
 ms_set_region = function(
-  region = ms_regions()) {
+    region = ms_regions()) {
   region = match.arg(region)
   options(ms_region = region)
   return(region)
@@ -211,8 +217,8 @@ ms_set_region = function(
 #' Bing text to speech API
 #' @export
 ms_synthesize_api_url = function(
-  api = c("tts", "bing"),
-  region = NULL
+    api = c("tts", "bing"),
+    region = NULL
 ){
   api = match.arg(api)
 

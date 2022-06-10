@@ -1,3 +1,7 @@
+# mscstts 0.6.3
+
+* Skipping test that was failing on CRAN.
+
 # mscstts 0.6.2
 
 * Skipping test that was failing on CRAN.
