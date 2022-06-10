@@ -24,6 +24,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -36,18 +38,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">mscstts</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.3</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
@@ -57,8 +53,8 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/muschellij2/mscstts/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/muschellij2/mscstts/" class="external-link">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -76,19 +72,19 @@
   <div class="contents col-md-9">
 
 
-<div id="mscstts-package" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#mscstts-package" class="anchor"></a>mscstts Package:</h1></div>
-<p>The goal of <code>mscstts</code> is to provide an R Client for the Microsoft Cognitive Services Text to Speech REST API, including voice synthesis. A valid account MUST be registered at the Microsoft Cognitive Services website <a href="https://azure.microsoft.com/en-us/services/cognitive-services/" class="uri">https://azure.microsoft.com/en-us/services/cognitive-services/</a> in order to obtain a (free) API key. Without an API key, this package will not work properly.</p>
-<p>See the documentation here: <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/overview" class="uri">https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/overview</a></p>
-<div id="getting-an-api-key" class="section level2">
-<h2 class="hasAnchor">
-<a href="#getting-an-api-key" class="anchor"></a>Getting an API key</h2>
-<p>You can get a TTS API key here: <a href="https://azure.microsoft.com/en-us/try/cognitive-services/" class="uri">https://azure.microsoft.com/en-us/try/cognitive-services/</a>. The API you need to get one from is Cognitive Services, Speech.</p>
-<ol>
+<div class="section level1">
+<div class="page-header"><h1 id="mscstts-package">mscstts Package:<a class="anchor" aria-label="anchor" href="#mscstts-package"></a>
+</h1></div>
+<p>The goal of <code>mscstts</code> is to provide an R Client for the Microsoft Cognitive Services Text to Speech REST API, including voice synthesis. A valid account MUST be registered at the Microsoft Cognitive Services website <a href="https://azure.microsoft.com/en-us/services/cognitive-services/" class="external-link uri">https://azure.microsoft.com/en-us/services/cognitive-services/</a> in order to obtain a (free) API key. Without an API key, this package will not work properly.</p>
+<p>See the documentation here: <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/overview" class="external-link uri">https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/overview</a></p>
+<div class="section level2">
+<h2 id="getting-an-api-key">Getting an API key<a class="anchor" aria-label="anchor" href="#getting-an-api-key"></a>
+</h2>
+<p>You can get a TTS API key here: <a href="https://azure.microsoft.com/en-us/try/cognitive-services/" class="external-link uri">https://azure.microsoft.com/en-us/try/cognitive-services/</a>. The API you need to get one from is Cognitive Services, Speech.</p>
+<ol style="list-style-type: decimal">
 <li>Create an Azure account</li>
-<li>Go to <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" class="uri">https://portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices</a>. If that works, skip to step 5.</li>
-<li>Go to <a href="https://portal.azure.com/#home" class="uri">https://portal.azure.com/#home</a>
+<li>Go to <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" class="external-link uri">https://portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices</a>. If that works, skip to step 5.</li>
+<li>Go to <a href="https://portal.azure.com/#home" class="external-link uri">https://portal.azure.com/#home</a>
 </li>
 <li>Click <code>+ Create a Resource</code>
 </li>
@@ -98,42 +94,47 @@
 <li>Should be able to create an F0 account (which is free - see below) if you hit the pricing tiers</li>
 </ol>
 <p><img src="reference/figures/README-f0.png" width="382"></p>
-<div id="setting-up-your-api-key" class="section level3">
-<h3 class="hasAnchor">
-<a href="#setting-up-your-api-key" class="anchor"></a>Setting up your API key</h3>
+<div class="section level3">
+<h3 id="setting-up-your-api-key">Setting up your API key<a class="anchor" aria-label="anchor" href="#setting-up-your-api-key"></a>
+</h3>
 <p>You can set up your API key in a number of ways (where <code>XXX</code> is your API key):</p>
-<ol>
+<ol style="list-style-type: decimal">
 <li>Edit <code>~/.Renviron</code> and set <code>MS_TTS_API_KEY = "XXXX"</code>
 </li>
-<li>In <code>R</code>, use <code><a href="https://rdrr.io/r/base/options.html">options(ms_tts_key = "XXXX")</a></code>.</li>
+<li>In <code>R</code>, use <code>options(ms_tts_key = "XXXX")</code>.</li>
 <li>Set <code>export MS_TTS_API_KEY=XXXX</code> in <code>.bash_profile</code>/<code>.bashrc</code> if you’re using <code>R</code> in the terminal.</li>
-<li>Pass <code>api_key = "XXXX"</code> in arguments of functions such as <code><a href="reference/ms_list_voices.html">ms_list_voices(api_key = "XXXX")</a></code>.</li>
+<li>Pass <code>api_key = "XXXX"</code> in arguments of functions such as <code>ms_list_voices(api_key = "XXXX")</code>.</li>
 </ol>
 </div>
 </div>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
 <p>You can install <code>mscstts</code> from GitHub with:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="co"># install.packages("remotes")</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"muschellij2/mscstts"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"muschellij2/mscstts"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="example" class="section level2">
-<h2 class="hasAnchor">
-<a href="#example" class="anchor"></a>Example</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="kw">library</span>(mscstts)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="cf">if</span> (<span class="kw">ms_have_tts_key</span>()) {</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a>  res =<span class="st"> </span><span class="kw">ms_synthesize</span>(</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>    <span class="dt">script =</span> <span class="st">"hey, how are you doing? I'm doing pretty good"</span>,</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a>    <span class="dt">output_format =</span> <span class="st">"audio-16khz-128kbitrate-mono-mp3"</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a>  tmp &lt;-<span class="st"> </span><span class="kw">tempfile</span>(<span class="st">"example"</span>, <span class="dt">fileext =</span> <span class="st">".mp3"</span>)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a>  <span class="kw">writeBin</span>(res<span class="op">$</span>content, <span class="dt">con =</span> tmp)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a>  mp3 =<span class="st"> </span>tuneR<span class="op">::</span><span class="kw">readMP3</span>(tmp)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true"></a>}</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true"></a>testthat<span class="op">::</span><span class="kw">expect_true</span>(<span class="kw">file.size</span>(tmp) <span class="op">&gt;</span><span class="st"> </span><span class="dv">50000</span>)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true"></a><span class="cf">if</span> (<span class="kw">interactive</span>()) {</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true"></a>  tuneR<span class="op">::</span><span class="kw">play</span>(mp3, <span class="dt">player =</span> <span class="st">"play"</span>)</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true"></a>}</span></code></pre></div>
+<div class="section level2">
+<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+</h2>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/muschellij2/mscstts" class="external-link">mscstts</a></span><span class="op">)</span>
+<span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="reference/ms_get_tts_key.html">ms_have_tts_key</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">res</span> <span class="op">=</span> <span class="fu"><a href="reference/ms_synthesize.html">ms_synthesize</a></span><span class="op">(</span>
+    script <span class="op">=</span> <span class="st">"hey, how are you doing? I'm doing pretty good"</span>,
+    output_format <span class="op">=</span> <span class="st">"audio-16khz-128kbitrate-mono-mp3"</span><span class="op">)</span>
+  <span class="va">tmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="st">"example"</span>, fileext <span class="op">=</span> <span class="st">".mp3"</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/readBin.html" class="external-link">writeBin</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">content</span>, con <span class="op">=</span> <span class="va">tmp</span><span class="op">)</span>
+  <span class="va">mp3</span> <span class="op">=</span> <span class="fu">tuneR</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tuneR/man/readMP3.html" class="external-link">readMP3</a></span><span class="op">(</span><span class="va">tmp</span><span class="op">)</span>
+<span class="op">}</span>
+<span class="fu">testthat</span><span class="fu">::</span><span class="fu"><a href="https://testthat.r-lib.org/reference/logical-expectations.html" class="external-link">expect_true</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.info.html" class="external-link">file.size</a></span><span class="op">(</span><span class="va">tmp</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">50000</span><span class="op">)</span>
+<span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">player</span> <span class="op">=</span> <span class="fu">tuneR</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tuneR/man/WavPlayer.html" class="external-link">getWavPlayer</a></span><span class="op">(</span><span class="op">)</span>
+  <span class="kw">if</span> <span class="op">(</span><span class="va">.Platform</span><span class="op">$</span><span class="va">OS.type</span> <span class="op">==</span> <span class="st">"windows"</span> <span class="op">&amp;&amp;</span> <span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">player</span><span class="op">)</span><span class="op">)</span> <span class="va">player</span> <span class="op">=</span> <span class="cn">NULL</span>
+  <span class="kw">if</span> <span class="op">(</span><span class="va">.Platform</span><span class="op">$</span><span class="va">OS.type</span> <span class="op">!=</span> <span class="st">"windows"</span> <span class="op">&amp;&amp;</span> <span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">player</span><span class="op">)</span><span class="op">)</span> <span class="va">player</span> <span class="op">=</span> <span class="st">"play"</span>
+  <span class="fu">tuneR</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tuneR/man/play.html" class="external-link">play</a></span><span class="op">(</span><span class="va">mp3</span>, player <span class="op">=</span> <span class="va">player</span><span class="op">)</span>
+<span class="op">}</span></code></pre></div>
 </div>
 </div>
 
@@ -141,47 +142,57 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=mscstts">https://​cloud.r-project.org/​package=mscstts</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/muschellij2/mscstts/">https://​github.com/​muschellij2/​mscstts/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/muschellij2/mscstts/issues">https://​github.com/​muschellij2/​mscstts/​issues</a>
-</li>
-</ul>
-</div>
-<div class="license">
-<h2>License</h2>
-<ul class="list-unstyled">
-<li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></small></li>
-</ul>
-</div>
-<div class="developers">
-<h2>Developers</h2>
-<ul class="list-unstyled">
-<li>John Muschelli <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-6469-1750" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="https://cloud.r-project.org/package=mscstts" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/muschellij2/mscstts/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/muschellij2/mscstts/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="license">
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li><a href="https://travis-ci.com/muschellij2/mscstts"><img src="https://travis-ci.com/muschellij2/mscstts.svg?branch=master" alt="Travis build status"></a></li>
-<li><a href="https://ci.appveyor.com/project/muschellij2/mscstts"><img src="https://ci.appveyor.com/api/projects/status/github/muschellij2/mscstts?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a></li>
+<li><a href="LICENSE.html">Full license</a></li>
+<li><small><a href="https://www.r-project.org/Licenses/GPL-3" class="external-link">GPL-3</a></small></li>
 </ul>
 </div>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing mscstts</a></li>
+</ul>
 </div>
+
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
+<ul class="list-unstyled">
+<li>John Muschelli <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-6469-1750" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+</ul>
+</div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://travis-ci.com/muschellij2/mscstts" class="external-link"><img src="https://travis-ci.com/muschellij2/mscstts.svg?branch=master" alt="Travis build status"></a></li>
+<li><a href="https://ci.appveyor.com/project/muschellij2/mscstts" class="external-link"><img src="https://ci.appveyor.com/api/projects/status/github/muschellij2/mscstts?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a></li>
+</ul>
+</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by John Muschelli.</p>
+  <p></p>
+<p>Developed by John Muschelli.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>
@@ -189,6 +200,8 @@
 
   
 
+
+  
 
   </body>
 </html>
