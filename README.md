@@ -1,8 +1,7 @@
 
-[![Travis build
-status](https://travis-ci.com/muschellij2/mscstts.svg?branch=master)](https://travis-ci.com/muschellij2/mscstts)
-[![AppVeyor Build
-Status](https://ci.appveyor.com/api/projects/status/github/muschellij2/mscstts?branch=master&svg=true)](https://ci.appveyor.com/project/muschellij2/mscstts)
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/muschellij2/mscstts/workflows/R-CMD-check/badge.svg)](https://github.com/muschellij2/mscstts/actions)
+<!-- badges: end -->
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # mscstts Package:
@@ -10,9 +9,9 @@ Status](https://ci.appveyor.com/api/projects/status/github/muschellij2/mscstts?b
 The goal of `mscstts` is to provide an R Client for the Microsoft
 Cognitive Services Text to Speech REST API, including voice synthesis. A
 valid account MUST be registered at the Microsoft Cognitive Services
-website <https://azure.microsoft.com/en-us/services/cognitive-services/>
-in order to obtain a (free) API key. Without an API key, this package
-will not work properly.
+website <https://azure.microsoft.com/en-us/free/cognitive-services/> in
+order to obtain a (free) API key. Without an API key, this package will
+not work properly.
 
 See the documentation here:
 <https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/overview>
@@ -34,7 +33,7 @@ need to get one from is Cognitive Services, Speech.
 7.  Should be able to create an F0 account (which is free - see below)
     if you hit the pricing tiers
 
-<img src="man/figures/README-f0.png" width="382" />
+![](man/figures/README-f0.png)<!-- -->
 
 ### Setting up your API key
 
