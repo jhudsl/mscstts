@@ -109,7 +109,7 @@ ms_synthesize = function(
     stop("Need smaller script! SSML is over 1024 characters")
   }
   res <- POST(url = synth_url,
-              ctype,
+              ctype_hdr,
               fmt_hdr,
               auth_hdr,
               user_agent_hdr,
