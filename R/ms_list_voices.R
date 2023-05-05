@@ -1,5 +1,4 @@
-
-#' List Voices
+#' Get a Full List of Voices for a specific region
 #'
 #' @param api_key Microsoft Cognitive Services API key, if token is not
 #' provided.

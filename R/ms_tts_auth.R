@@ -55,6 +55,7 @@ ms_get_tts_key = function(api_key = NULL, error = TRUE) {
   return(api_key)
 }
 
+#' Does user have API Key?
 #' @rdname ms_get_tts_key
 #' @export
 ms_have_tts_key = function(api_key = NULL) {
@@ -62,7 +63,7 @@ ms_have_tts_key = function(api_key = NULL) {
   !is.null(api_key)
 }
 
-
+#' Set API Key as a global option
 #' @rdname ms_get_tts_key
 #' @export
 ms_set_tts_key = function(api_key) {
@@ -71,16 +72,17 @@ ms_set_tts_key = function(api_key) {
 }
 
 
+#' Check whether API Key is valid
 #' @rdname ms_get_tts_key
 #' @export
 ms_valid_tts_key = function(
-  api_key = NULL,
-  region = ms_regions()) {
+    api_key = NULL,
+    region = ms_regions()) {
 
   res = try({
     ms_get_tts_token(api_key = api_key,
                      region = region)
-    })
+  })
   if (inherits(res, "try-error")) {
     return(FALSE)
   }
@@ -104,8 +106,8 @@ ms_valid_tts_key = function(
 #'    token = ms_get_tts_token()
 #' }
 ms_get_tts_token = function(
-  api_key = NULL,
-  region = ms_regions()) {
+    api_key = NULL,
+    region = ms_regions()) {
 
   token_url = ms_auth_url(region = region)
 
@@ -115,7 +117,6 @@ ms_get_tts_token = function(
                             api_key)
   res = httr::POST(token_url,
                    hdr,
-                   # httr::content_type("application/x-www-form-urlencoded"))
                    httr::content_type("text/plain"))
 
   httr::stop_for_status(res)
@@ -128,15 +129,16 @@ ms_get_tts_token = function(
        token = base64_token)
 }
 
+#' Create issueToken URL Endpoint to get access token
 #' @rdname ms_get_tts_token
 #' @export
-ms_auth_url = function(
-  region = ms_regions()) {
+ms_auth_url = function(region = ms_regions()) {
   if (!is.null(region)) {
     region = match.arg(region)
   } else {
     region = getOption("ms_region")
   }
+
   if (!is.null(region)) {
     region = paste0(region, ".")
   }
@@ -145,6 +147,7 @@ ms_auth_url = function(
   return(token_url)
 }
 
+#' Check if token has expired
 #' @rdname ms_get_tts_token
 #' @param token An authentication of class \code{token},
 #' likely from \code{\link{ms_get_tts_token}}

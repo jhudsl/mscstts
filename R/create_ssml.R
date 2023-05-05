@@ -1,4 +1,4 @@
-#' Create SSML for Passing to Synthesize
+#' Create Speech Synthesis Markup Language (SSML)
 #'
 #' @param script A character vector of lines to be spoken
 #' @param gender Sex of the Speaker
@@ -26,11 +26,12 @@ ms_create_ssml = function(
   language = "en-US",
   escape = FALSE
 ){
-
+  # Remove any HTML or XML tags
   if (escape) {
     script = gsub("[<>/]", "", script)
     script = gsub("&", "and", script)
   }
+
   if (!is.null(voice)) {
     xname = ms_voice_info(voice)
     gender = xname$gender
@@ -58,6 +59,8 @@ ms_create_ssml = function(
   return(ssml)
 }
 
+#' Retrieve information about voices that Microsoft Cognitive Speech Services provides
+#'
 #' @rdname ms_create_ssml
 #' @param api_key Microsoft Cognitive Services API key, if token is not
 #' provided.
@@ -83,7 +86,7 @@ ms_voice_info = function(voice,
       stop("Voice given is not a recognized voice! See ms_locale_df()")
     }
   }
-  df = df[ keep, , drop = FALSE]
+  df = df[keep, , drop = FALSE]
   df = df[1, , drop = FALSE]
   L = list(gender = df$gender,
            full_name = df$locale,
