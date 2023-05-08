@@ -24,8 +24,8 @@ ms_language_to_ms_name = function(
 
 #' Validate whether a specified language and gender combination is supported
 #'
-#' @param language
-#' @param gender
+#' @param language A language code, see \code{\link{ms_language_codes}}
+#' @param gender Either Male or Female, not all languages support both genders
 #'
 #' @export
 ms_validate_language_gender = function(language =  "en-US",
