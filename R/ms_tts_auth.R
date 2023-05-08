@@ -55,16 +55,15 @@ ms_get_tts_key = function(api_key = NULL, error = TRUE) {
   return(api_key)
 }
 
-#' Does user have API Key?
-#' @rdname ms_get_tts_key
+#' @describeIn ms_get_tts_key Does user have API Key?
 #' @export
 ms_have_tts_key = function(api_key = NULL) {
   api_key = ms_get_tts_key(api_key = api_key, error = FALSE)
   !is.null(api_key)
 }
 
-#' Set API Key as a global option
-#' @rdname ms_get_tts_key
+
+#' @describeIn ms_get_tts_key Set API Key as a global option
 #' @export
 ms_set_tts_key = function(api_key) {
   options("ms_tts_key" = api_key)
@@ -72,8 +71,7 @@ ms_set_tts_key = function(api_key) {
 }
 
 
-#' Check whether API Key is valid
-#' @rdname ms_get_tts_key
+#' @describeIn ms_get_tts_key Check whether API Key is valid
 #' @export
 ms_valid_tts_key = function(
     api_key = NULL,
