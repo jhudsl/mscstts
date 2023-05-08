@@ -95,7 +95,7 @@ ms_synthesize = function(
     "User-Agent" = "MyTextToSpeechApp")
   # Host Header
   host_hdr = add_headers(
-    "Host" = "westus.tts.speech.microsoft.com")
+    "Host" = paste0(region, ".", "tts.speech.microsoft.com"))
 
   ssml = ms_create_ssml(
     script = script,
@@ -108,6 +108,7 @@ ms_synthesize = function(
     cat(ssml)
     stop("Need smaller script! SSML is over 1024 characters")
   }
+
   res <- POST(url = synth_url,
               ctype_hdr,
               fmt_hdr,
@@ -116,8 +117,9 @@ ms_synthesize = function(
               host_hdr,
               body = ssml)
 
-  stop_for_status(res)
+  httr::stop_for_status(res)
   out = content(res)
+  class(token) = "token"
 
   L = list(
     request = res,
