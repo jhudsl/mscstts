@@ -22,8 +22,8 @@
 #' }
 #' @export
 ms_list_voices = function(
-  token = NULL,
   api_key = NULL,
+  token = NULL,
   region = NULL,
   ...
 ){
@@ -37,16 +37,22 @@ ms_list_voices = function(
                              region = region)$token
   }
 
-  auth_hdr = httr::add_headers(
-    "Authorization" = token)
-  res = httr::GET(
-    synth_url,
-    auth_hdr,
-    ...)
+  # Create a request
+  req <- httr2::request(synth_url)
 
-  httr::stop_for_status(res)
-  out = httr::content(res, as = "text")
-  out = jsonlite::fromJSON(out, flatten = TRUE)
+  # Specify HTTP headers
+  req <- req %>%
+    httr2::req_headers(
+      `Host` = paste0(region, ".", "api.cognitive.microsoft.com"),
+      `Ocp-Apim-Subscription-Key` = api_key)
+
+  # Perform a request and fetch the response
+  resp <- req %>%
+    httr2::req_perform()
+
+  # Extract JSON
+  resp_json = httr2::resp_body_json(resp)
+  # TODO: Reformat list into dataframes
 
   return(out)
 }

@@ -81,41 +81,27 @@ ms_synthesize = function(
                              region = region)$token
   }
 
-  # Content Type Header
-  ctype_hdr = content_type("application/ssml+xml")
-  # Format Header
-  output_format = match.arg(output_format)
-  fmt_hdr = add_headers(
-    "X-Microsoft-OutputFormat" = output_format)
-  # Authorization Header
-  auth_hdr = add_headers(
-    "Authorization" = paste("Bearer", token))
-  # User Agent Header
-  user_agent_hdr = add_headers(
-    "User-Agent" = "MyTextToSpeechApp")
-  # Host Header
-  host_hdr = add_headers(
-    "Host" = paste0(region, ".", "tts.speech.microsoft.com"))
+  # Create a request
+  req <- httr2::request(synth_url)
 
-  ssml = ms_create_ssml(
-    script = script,
-    gender = gender,
-    language = language,
-    voice = voice,
-    escape = escape)
+  # Specify HTTP headers
+  req <- req %>%
+    httr2::req_headers(
+      `Content-Type` = "application/ssml+xml",
+      `X-Microsoft-OutputFormat` = "riff-24khz-16bit-mono-pcm",
+      `Authorization` = paste("Bearer",  token),
+      `User-Agent` = "MyTextToSpeech",
+      Host = "westus.tts.speech.microsoft.com") %>%
+    httr2::req_body_raw("<speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US'
+                        xml:gender='Male' name='Microsoft Server Speech Text to Speech Voice
+                        (en-US, GuyNeural)'>Microsoft Speech Service Text-to-Speech API</voice></speak>")
 
-  if (nchar(ssml) > 1024) {
-    cat(ssml)
-    stop("Need smaller script! SSML is over 1024 characters")
-  }
+  # Perform a request and fetch the response
+  resp <- req %>% httr2::req_perform()
 
-  res <- POST(url = synth_url,
-              ctype_hdr,
-              fmt_hdr,
-              auth_hdr,
-              user_agent_hdr,
-              host_hdr,
-              body = ssml)
+  # Transfer binary data to WAV file
+  output <- tempfile(fileext = ".wav")
+  writeBin(resp$body, con = output)
 
   httr::stop_for_status(res)
   out = content(res)
