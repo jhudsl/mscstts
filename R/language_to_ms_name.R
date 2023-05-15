@@ -1,4 +1,4 @@
-#' Language and Gender to Microsoft Voice Name
+#' Convert Language and Gender to Microsoft Voice Name
 #'
 #' @param language A language code, see \code{\link{ms_language_codes}}
 #' @param gender Either Male or Female, not all languages support both genders
@@ -21,11 +21,15 @@ ms_language_to_ms_name = function(
   return(xname)
 }
 
-#' @rdname ms_language_to_ms_name
+
+#' Validate whether a specified language and gender combination is supported
+#'
+#' @param language A language code, see \code{\link{ms_language_codes}}
+#' @param gender Either Male or Female, not all languages support both genders
+#'
 #' @export
-ms_validate_language_gender = function(
-  language =  "en-US",
-  gender = c("Female", "Male")) {
+ms_validate_language_gender = function(language =  "en-US",
+                                       gender = c("Female", "Male")) {
   locales = ms_locales()
   n_locales = names(locales)
   stopifnot(length(language) == 1)
@@ -46,5 +50,3 @@ ms_validate_language_gender = function(
   return(list(language = language, gender = gender,
               full_name = xname))
 }
-
-

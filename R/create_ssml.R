@@ -1,14 +1,14 @@
-#' Create SSML for Passing to Synthesize
+#' Create Speech Synthesis Markup Language (SSML)
 #'
 #' @param script A character vector of lines to be spoken
+#' @param voice full voice name, usually from
+#' \code{\link{ms_language_to_ms_name}}. Will override
+#' language and gender.
 #' @param gender Sex of the Speaker
 #' @param language Language to be spoken,
 #' must be from \code{\link{ms_language_codes}}
 #' @param escape Should non-standard characters be substituted?  Should not
 #' be used if \code{script} has SSML tags
-#' @param voice full voice name, usually from
-#' \code{\link{ms_language_to_ms_name}}.  Will override
-#' language and gender.
 #' @return A character string of the text and SSML markup
 #' @export
 #'
@@ -26,11 +26,12 @@ ms_create_ssml = function(
   language = "en-US",
   escape = FALSE
 ){
-
+  # Remove any HTML or XML tags
   if (escape) {
     script = gsub("[<>/]", "", script)
     script = gsub("&", "and", script)
   }
+
   if (!is.null(voice)) {
     xname = ms_voice_info(voice)
     gender = xname$gender
@@ -58,13 +59,17 @@ ms_create_ssml = function(
   return(ssml)
 }
 
+#' Retrieve information about voices that Microsoft Cognitive Speech Services provides
+#'
 #' @rdname ms_create_ssml
-#' @param api_key Microsoft Cognitive Services API key, if token is not
-#' provided.
-#' @param script A character vector of lines to be spoken
+#' @param voice full voice name, usually from
+#' \code{\link{ms_language_to_ms_name}}. Will override
+#' language and gender.
 #' @param token An authentication token, base-64 encoded usually from
 #' \code{\link{ms_get_tts_token}}.  If not provided, will be created from
 #' \code{\link{ms_get_tts_token}}
+#' @param api_key Microsoft Cognitive Services API key, if token is not
+#' provided.
 #' @param region Subscription region for your key.
 #' See \url{https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/overview}
 #' @export
@@ -83,7 +88,7 @@ ms_voice_info = function(voice,
       stop("Voice given is not a recognized voice! See ms_locale_df()")
     }
   }
-  df = df[ keep, , drop = FALSE]
+  df = df[keep, , drop = FALSE]
   df = df[1, , drop = FALSE]
   L = list(gender = df$gender,
            full_name = df$locale,

@@ -1,5 +1,4 @@
-
-#' List Voices
+#' Get a Full List of Voices for a specific region
 #'
 #' @param api_key Microsoft Cognitive Services API key, if token is not
 #' provided.
@@ -23,8 +22,8 @@
 #' }
 #' @export
 ms_list_voices = function(
-  token = NULL,
   api_key = NULL,
+  token = NULL,
   region = NULL,
   ...
 ){
@@ -38,16 +37,23 @@ ms_list_voices = function(
                              region = region)$token
   }
 
-  auth_hdr = httr::add_headers(
-    "Authorization" = token)
-  res = httr::GET(
-    synth_url,
-    auth_hdr,
-    ...)
+  # Create a request
+  req <- httr2::request(synth_url)
 
-  httr::stop_for_status(res)
-  out = httr::content(res, as = "text")
-  out = jsonlite::fromJSON(out, flatten = TRUE)
+  # Specify HTTP headers
+  req <- req %>%
+    httr2::req_headers(
+      `Host` = paste0(region, ".", "api.cognitive.microsoft.com"),
+      `Authorization` = paste("Bearer", token))
+
+  # Perform a request and fetch the response
+  resp <- req %>%
+    httr2::req_perform()
+
+  # Extract JSON
+  out <- httr2::resp_body_string(resp)
+  # Convert JSON to a single, non-nested data frame
+  out <- jsonlite::fromJSON(out, flatten = TRUE)
 
   return(out)
 }

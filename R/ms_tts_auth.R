@@ -55,7 +55,7 @@ ms_get_tts_key = function(api_key = NULL, error = TRUE) {
   return(api_key)
 }
 
-#' @rdname ms_get_tts_key
+#' @describeIn ms_get_tts_key Does user have API Key?
 #' @export
 ms_have_tts_key = function(api_key = NULL) {
   api_key = ms_get_tts_key(api_key = api_key, error = FALSE)
@@ -63,7 +63,7 @@ ms_have_tts_key = function(api_key = NULL) {
 }
 
 
-#' @rdname ms_get_tts_key
+#' @describeIn ms_get_tts_key Set API Key as a global option
 #' @export
 ms_set_tts_key = function(api_key) {
   options("ms_tts_key" = api_key)
@@ -71,16 +71,16 @@ ms_set_tts_key = function(api_key) {
 }
 
 
-#' @rdname ms_get_tts_key
+#' @describeIn ms_get_tts_key Check whether API Key is valid
 #' @export
 ms_valid_tts_key = function(
-  api_key = NULL,
-  region = ms_regions()) {
+    api_key = NULL,
+    region = ms_regions()) {
 
   res = try({
     ms_get_tts_token(api_key = api_key,
                      region = region)
-    })
+  })
   if (inherits(res, "try-error")) {
     return(FALSE)
   }
@@ -104,39 +104,48 @@ ms_valid_tts_key = function(
 #'    token = ms_get_tts_token()
 #' }
 ms_get_tts_token = function(
-  api_key = NULL,
-  region = ms_regions()) {
+    api_key = NULL,
+    region = ms_regions()) {
 
   token_url = ms_auth_url(region = region)
-
   api_key = ms_get_tts_key(api_key = api_key, error = TRUE)
 
-  hdr = httr::add_headers('Ocp-Apim-Subscription-Key' =
-                            api_key)
-  res = httr::POST(token_url,
-                   hdr,
-                   # httr::content_type("application/x-www-form-urlencoded"))
-                   httr::content_type("text/plain"))
+  # Create a request
+  req <- httr2::request(token_url)
 
-  httr::stop_for_status(res)
-  cr = httr::content(res)
-  base64_token = rawToChar(cr)
+  # Specify HTTP headers
+  req <- req %>%
+    httr2::req_headers(
+      `Ocp-Apim-Subscription-Key` = api_key,
+      `Host` = paste0(region, ".", "api.cognitive.microsoft.com"),
+      `Content-Type` = "application/x-www-form-urlencoded",
+      `Content-Length` = 0) %>%
+    httr2::req_body_raw("")
+
+  # Perform a request and fetch the response
+  resp <- req %>%
+    httr2::req_perform()
+
+  # Extract token in JSON Web Token (JWT) format as raw bytes
+  resp_raw = httr2::resp_body_raw(resp)
+
+  base64_token = rawToChar(resp_raw)
   attr(base64_token, "timestamp") = Sys.time()
   class(base64_token) = "token"
-  list(request = res,
-       # content = cr,
+  list(request = req,
        token = base64_token)
 }
 
+#' Create issueToken URL Endpoint to get access token
 #' @rdname ms_get_tts_token
 #' @export
-ms_auth_url = function(
-  region = ms_regions()) {
+ms_auth_url = function(region = ms_regions()) {
   if (!is.null(region)) {
     region = match.arg(region)
   } else {
     region = getOption("ms_region")
   }
+
   if (!is.null(region)) {
     region = paste0(region, ".")
   }
@@ -145,6 +154,7 @@ ms_auth_url = function(
   return(token_url)
 }
 
+#' Check if token has expired
 #' @rdname ms_get_tts_token
 #' @param token An authentication of class \code{token},
 #' likely from \code{\link{ms_get_tts_token}}
