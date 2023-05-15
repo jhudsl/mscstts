@@ -44,15 +44,16 @@ ms_list_voices = function(
   req <- req %>%
     httr2::req_headers(
       `Host` = paste0(region, ".", "api.cognitive.microsoft.com"),
-      `Ocp-Apim-Subscription-Key` = api_key)
+      `Authorization` = paste("Bearer", token))
 
   # Perform a request and fetch the response
   resp <- req %>%
     httr2::req_perform()
 
   # Extract JSON
-  resp_json = httr2::resp_body_json(resp)
-  # TODO: Reformat list into dataframes
+  out <- httr2::resp_body_string(resp)
+  # Convert JSON to a single, non-nested data frame
+  out <- jsonlite::fromJSON(out, flatten = TRUE)
 
   return(out)
 }
