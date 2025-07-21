@@ -7,7 +7,7 @@
 \format{
 A \code{data.frame} with 2 columns:
 \describe{
-\item{code}{the 5 character langugae code, separated by a hyphen, also referred to as a locale}
+\item{code}{the 5 character language code, separated by a hyphen, also referred to as a locale}
 \item{language}{the name of the language}
 }
 }
