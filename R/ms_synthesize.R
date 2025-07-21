@@ -12,7 +12,7 @@
 #' @param language Language to be spoken,
 #' must be from \code{\link{ms_language_codes}}
 #' @param output_format Format of the output, see
-#' \url{https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/how-to-migrate-from-bing-speech}
+#' \url{https://learn.microsoft.com/en-us/azure/cognitive-services/speech-service/how-to-migrate-from-bing-speech}
 #' for more information
 #' @param escape Should non-standard characters be substituted?  Should not
 #' be used if \code{script} has SSML tags. See \code{\link{ms_create_ssml}}

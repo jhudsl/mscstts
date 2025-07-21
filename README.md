@@ -2,6 +2,7 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/muschellij2/mscstts/workflows/R-CMD-check/badge.svg)](https://github.com/muschellij2/mscstts/actions)
+[![R-CMD-check](https://github.com/muschellij2/mscstts/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/muschellij2/mscstts/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 # mscstts Package:
@@ -14,7 +15,7 @@ order to obtain a (free) API key. Without an API key, this package will
 not work properly.
 
 See the documentation here:
-<https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/overview>
+<https://learn.microsoft.com/en-us/azure/cognitive-services/speech-service/overview>
 
 ## Getting an API key
 
@@ -33,7 +34,7 @@ you need to get one from is Cognitive Services, Speech.
 7.  Should be able to create an F0 account (which is free - see below)
     if you hit the pricing tiers
 
-![](man/figures/README-f0.png)<!-- -->
+<img src="man/figures/README-f0.png" width="382" />
 
 ### Setting up your API key
 

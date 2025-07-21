@@ -4,6 +4,7 @@ output: github_document
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/muschellij2/mscstts/workflows/R-CMD-check/badge.svg)](https://github.com/muschellij2/mscstts/actions)
+[![R-CMD-check](https://github.com/muschellij2/mscstts/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/muschellij2/mscstts/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 ```{r setup, include = FALSE}
@@ -16,7 +17,7 @@ knitr::opts_chunk$set(
 # mscstts Package: 
 The goal of `mscstts` is to provide an R Client for the Microsoft Cognitive Services Text to Speech REST API, including voice synthesis. A valid account MUST be registered at the Microsoft Cognitive Services website <https://azure.microsoft.com/en-us/free/cognitive-services/> in order to obtain a (free) API key. Without an API key, this package will not work properly.
 
-See the documentation here: https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/overview
+See the documentation here: https://learn.microsoft.com/en-us/azure/cognitive-services/speech-service/overview
 
 ## Getting an API key
 

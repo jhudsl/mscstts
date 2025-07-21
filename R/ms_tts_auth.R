@@ -13,7 +13,7 @@
 #' \code{api_key = Sys.getenv('MS_TTS_API_KEY2")}
 #' @param region Subscription region for your key.
 #' See
-#' \url{https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/overview}
+#' \url{https://learn.microsoft.com/en-us/azure/cognitive-services/speech-service/overview}
 #' @return API key
 #' @export
 #' @examples
@@ -94,7 +94,7 @@ ms_valid_tts_key = function(
 #' @param api_key Microsoft Cognitive Services API key
 #' @param region Subscription region for your key.
 #' See
-#' \url{https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/overview#reference-docs}
+#' \url{https://learn.microsoft.com/en-us/azure/cognitive-services/speech-service/overview#reference-docs}
 #' @return A list of the request, and token
 #' @export
 #' @importFrom httr POST add_headers stop_for_status content content_type
