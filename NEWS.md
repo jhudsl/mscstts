@@ -1,3 +1,7 @@
+# mscstts 0.6.4
+
+* Fixing links in docs for CRAN.
+
 # mscstts 0.6.3
 
 * Skipping test that was failing on CRAN.

@@ -69,7 +69,7 @@ See \url{https://docs.microsoft.com/en-us/azure/cognitive-services/speech-servic
 \code{tts} for text to speech or \code{bing} for
 Bing text to speech API}
 
-\item{...}{Additional arguments to send to \code{\link{POST}}}
+\item{...}{Additional arguments to send to \code{\link[httr]{POST}}}
 }
 \value{
 A list of the request, content, token, and `SSML`.

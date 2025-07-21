@@ -19,7 +19,7 @@
 #' @param voice full voice name, usually from
 #' \code{\link{ms_language_to_ms_name}}.  Will override
 #' language and gender.
-#' @param ... Additional arguments to send to \code{\link{POST}}
+#' @param ... Additional arguments to send to \code{\link[httr]{POST}}
 #'
 #' @return A list of the request, content, token, and `SSML`.
 #' @note The

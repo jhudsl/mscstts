@@ -8,7 +8,7 @@
 #' \code{\link{ms_get_tts_token}}
 #' @param region Subscription region for your key.
 #' See \url{https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/overview}
-#' @param ... Additional arguments to send to \code{\link{GET}}
+#' @param ... Additional arguments to send to \code{\link[httr]{GET}}
 #'
 #' @return A \code{data.frame} of the names and their long names.
 #' @examples \dontrun{

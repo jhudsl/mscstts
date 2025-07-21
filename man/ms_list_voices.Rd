@@ -17,7 +17,7 @@ provided.}
 \item{region}{Subscription region for your key.
 See \url{https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/overview}}
 
-\item{...}{Additional arguments to send to \code{\link{GET}}}
+\item{...}{Additional arguments to send to \code{\link[httr]{GET}}}
 }
 \value{
 A \code{data.frame} of the names and their long names.

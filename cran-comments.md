@@ -4,4 +4,4 @@
 
 * This is a new release.
 ---
-Hotfix for URL issue
+Hotfix for links issue
