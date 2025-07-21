@@ -38,7 +38,7 @@ be used if \code{script} has SSML tags}
 provided.}
 
 \item{region}{Subscription region for your key.
-See \url{https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/overview}}
+See \url{https://learn.microsoft.com/en-us/azure/cognitive-services/speech-service/overview}}
 }
 \value{
 A character string of the text and SSML markup

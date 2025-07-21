@@ -18,7 +18,7 @@ ms_expired_token(token = NULL)
 
 \item{region}{Subscription region for your key.
 See
-\url{https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/overview#reference-docs}}
+\url{https://learn.microsoft.com/en-us/azure/cognitive-services/speech-service/overview#reference-docs}}
 
 \item{token}{An authentication of class \code{token},
 likely from \code{\link{ms_get_tts_token}}}
