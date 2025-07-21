@@ -1,8 +1,8 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/muschellij2/mscstts/workflows/R-CMD-check/badge.svg)](https://github.com/muschellij2/mscstts/actions)
-[![R-CMD-check](https://github.com/muschellij2/mscstts/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/muschellij2/mscstts/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/jhudsl/mscstts/workflows/R-CMD-check/badge.svg)](https://github.com/jhudsl/mscstts/actions)
+[![R-CMD-check](https://github.com/jhudsl/mscstts/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jhudsl/mscstts/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 # mscstts Package:
@@ -54,7 +54,7 @@ You can install `mscstts` from GitHub with:
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("muschellij2/mscstts")
+remotes::install_github("jhudsl/mscstts")
 ```
 
 ## Example
