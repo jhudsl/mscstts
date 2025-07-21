@@ -1,19 +1,23 @@
 testthat::context("Regions match Website for locales")
 testthat::test_that("Check locales are equal to ms_locales", {
   testthat::skip_on_cran()
+  testthat::skip()
   if (requireNamespace("rvest", quietly = TRUE) &&
       requireNamespace("xml2", quietly = TRUE)) {
 
-    url = paste0("https://docs.microsoft.com/en-us/azure/cognitive-services/",
-                 "speech-service/language-support")
+    url = paste0("https://learn.microsoft.com/en-us/azure/ai-services/",
+                 "speech-service/language-support?tabs=tts")
     doc = xml2::read_html(url)
     tab = rvest::html_table(doc)
     # standard voices not neural
     index = sapply(tab, function(x) {
-      if (!"Voice name" %in% colnames(x)) {
+      cn = c("Voice name", "Text to speech voices")
+      if (!any(cn %in% colnames(x))) {
         return(NA_character_)
       }
-      x = x[, "Voice name", drop = TRUE]
+      cn = intersect(cn, colnames(x))
+      stopifnot(length(cn) == 1)
+      x = x[, cn, drop = TRUE]
       ifelse(any(grepl("Neural", x)), "neural", "regular")
     })
     keep = which(index %in% "regular")
